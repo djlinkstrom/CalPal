@@ -104,7 +104,7 @@
 
                     // close the childBrowser
                     //window.plugins.childBrowser.close();
-                    //iabrowser.close()
+                    iabrowser.close()
                 }
                 else if(uriLocation.indexOf("error=") != -1)
                 {
@@ -161,7 +161,7 @@
 			
 			if(uriLocation.indexOf("code=") != -1) {
 				$this.requestStatus = $this.status.SUCCESS;
-				
+				        alert("success");
 				/* Store the authCode temporarily */
 				$this.authCode = $this.getParameterByName("code", uriLocation);
 				
