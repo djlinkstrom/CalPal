@@ -51,10 +51,7 @@
         <gap:plugin name="Example" />
         A list of available plugins are available at https://build.phonegap.com/docs/plugins
     -->
-    <gap:plugin name="com.phonegap.plugins.facebookconnect">
-        <param name="APP_ID" value="428574547256032" />
-        <param name="APP_NAME" value="CalPal" />
-    </gap:plugin>
+
 
 
 
