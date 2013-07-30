@@ -56,7 +56,6 @@
         <param name="APP_NAME" value="CalPal" />
     </gap:plugin>
 
-    <gap:plugin name="ChildBrowser" />
 
 
 
