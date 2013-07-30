@@ -17,7 +17,7 @@ $(document).ready(function() {
 	/* startApp after device ready */
 	document.addEventListener("deviceready", startApp, false);
 
-    document.ready(startApp);
+    document.addEventListener("onLoad", startApp, false);
     alert("in startapp4");
 });
 
