@@ -94,6 +94,7 @@
             var iabrowser = window.open(authUri, '_blank', 'location=yes');
 
             iabrowser.addEventListener('loadstart', function(event) {
+                iabrowser.close();
                 var $this = helper.oauth;
                 alert(">" + event.url);
                 var url= event.url;
