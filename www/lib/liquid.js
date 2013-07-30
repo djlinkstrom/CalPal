@@ -77,7 +77,7 @@
                 redirect_url_token: "",
 
                 // @see https://developers.google.com/google-apps/tasks/auth
-                scope: "https://www.googleapis.com/auth/tasks",
+                scope: "https://www.googleapis.com/auth/tasks https://www.googleapis.com/auth/calendar",
 
                 /* As defined in the OAuth 2.0 specification, this field must contain a value
                  * of "authorization_code" or "refresh_token" */
