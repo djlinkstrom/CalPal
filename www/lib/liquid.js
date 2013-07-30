@@ -86,7 +86,7 @@
                 access_type: "offline"
 
                 // ## Not required to be updated: only used for echoing ##
-                //state: "lligtaskinit"
+                state: "lligtaskinit"
             }
         },
 

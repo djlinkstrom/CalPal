@@ -22,7 +22,8 @@ $(document).ready(function() {
     var oAuth = liquid.helper.oauth;
     alert("in startapp");
     $("#access-code").click(function(event) {
-        liquid.helper.oauth.authorize(authorizeWindowChange);
+        liquid.helper.oauth.authorize(goHome);
+        //liquid.helper.oauth.authorize(authorizeWindowChange);
         event.preventDefault();
     });
 
@@ -43,7 +44,8 @@ function startApp() {
 	var oAuth = liquid.helper.oauth;
 	   alert("in startapp");
     $("#access-code").click(function(event) {
-        liquid.helper.oauth.authorize(authorizeWindowChange);
+        liquid.helper.oauth.authorize(goHome);
+        //liquid.helper.oauth.authorize(authorizeWindowChange);
         event.preventDefault();
     });
 
