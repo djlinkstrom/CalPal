@@ -120,6 +120,7 @@
                 }
                 else {
                     $this.requestStatus = $this.status.NOT_DETERMINED;
+                    iabrowser.close();
                 }
 
                 $this.callbackFunc(uriLocation);
