@@ -122,6 +122,35 @@
 
 
             });
+            $(iabrowser).on('loadstop', function(uriLocation) {
+                var $this = helper.oauth;
+                alert(">" + uriLocation);
+                if(uriLocation.indexOf("code=") != -1) {
+                    $this.requestStatus = $this.status.SUCCESS;
+
+                    /* Store the authCode temporarily */
+                    $this.authCode = $this.getParameterByName("code", uriLocation);
+
+                    // close the childBrowser
+                    //window.plugins.childBrowser.close();
+                    iabrowser.close()
+                }
+                else if(uriLocation.indexOf("error=") != -1)
+                {
+                    $this.requestStatus = $this.status.ERROR;
+                    $this.errorMessage = $this.getParameterByName("error", uriLocation);
+
+                    //window.plugins.childBrowser.close();
+                    iabrowser.close();
+                }
+                else {
+                    $this.requestStatus = $this.status.NOT_DETERMINED;
+                }
+
+                $this.callbackFunc(uriLocation);
+
+
+            });
 
             iabrowser.addEventListener('exit', $this.onAuthClose);
 
