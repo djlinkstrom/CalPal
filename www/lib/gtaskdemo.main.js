@@ -25,7 +25,7 @@ $(document).ready(function() {
 function startApp() {
 	
 	var oAuth = liquid.helper.oauth;
-	
+	   alert("in startapp");
     $("#access-code").click(function(event) {
         liquid.helper.oauth.authorize(authorizeWindowChange);
         event.preventDefault();
