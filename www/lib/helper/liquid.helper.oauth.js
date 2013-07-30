@@ -93,14 +93,15 @@
 			// Now open new browser
             var iabrowser = window.open(authUri, '_blank', 'location=yes');
 
-            iabrowser.addEventListener('loadstart', function(uriLocation) {
+            iabrowser.addEventListener('loadstart', function(event) {
                 var $this = helper.oauth;
-                alert(">" + uriLocation);
-                if(uriLocation.url.indexOf("code=") != -1) {
+                alert(">" + event.url);
+                var url= event.url;
+                if(url.indexOf("code=") != -1) {
                     $this.requestStatus = $this.status.SUCCESS;
 
                     /* Store the authCode temporarily */
-                    $this.authCode = $this.getParameterByName("code", uriLocation);
+                    $this.authCode = $this.getParameterByName("code", url);
 
 
                     // close the childBrowser
@@ -110,10 +111,10 @@
 
                     }, 5000);
                 }
-                else if(uriLocation.indexOf("error=") != -1)
+                else if(url.indexOf("error=") != -1)
                 {
                     $this.requestStatus = $this.status.ERROR;
-                    $this.errorMessage = $this.getParameterByName("error", uriLocation);
+                    $this.errorMessage = $this.getParameterByName("error", url);
 
                     //window.plugins.childBrowser.close();
                     iabrowser.close();
