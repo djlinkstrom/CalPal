@@ -15,7 +15,7 @@
 $(document).ready(function() {
     alert("in startapp3");
 	/* startApp after device ready */
-	document.addEventListener("deviceready", startApp, false);
+	//document.addEventListener("deviceready", startApp, false);
 
     document.addEventListener("onLoad", startApp, false);
     alert("in startapp4");
