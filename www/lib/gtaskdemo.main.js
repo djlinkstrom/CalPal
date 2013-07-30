@@ -19,6 +19,19 @@ $(document).ready(function() {
 
     document.addEventListener("onLoad", startApp, false);
     alert("in startapp4");
+    var oAuth = liquid.helper.oauth;
+    alert("in startapp");
+    $("#access-code").click(function(event) {
+        liquid.helper.oauth.authorize(authorizeWindowChange);
+        event.preventDefault();
+    });
+
+
+    if (oAuth.isAuthorized()) {
+        /* Start Page TaskList */
+        alert("authorized");
+        startPageTaskList();
+    }
 });
 
 
