@@ -34,6 +34,7 @@ function startApp() {
     
     if (oAuth.isAuthorized()) {
     	/* Start Page TaskList */
+        alert("authorized");
     	startPageTaskList();
     }
 }
@@ -69,6 +70,7 @@ function authorizeWindowChange(uriLocation) {
     } 
     else {
         // do nothing, since user can be visiting different urls
+        alert("something");
     }
 }
 
