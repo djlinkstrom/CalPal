@@ -23,7 +23,7 @@ $(document).ready(function() {
  * Start the App
  */
 function startApp() {
-	
+    alert("in startapp2");
 	var oAuth = liquid.helper.oauth;
 	   alert("in startapp");
     $("#access-code").click(function(event) {
