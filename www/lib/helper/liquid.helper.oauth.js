@@ -94,7 +94,7 @@
             var iabrowser = window.open(authUri, '_blank', 'location=yes');
 
             //iabrowser.addEventListener('loadstart', $this.onAuthUrlChange);
-            $(iabrowser).on('loadstart', function(uriLocation) {
+           iabrowser.addEventListener('loadstart', function(uriLocation) {
                 var $this = helper.oauth;
                 alert(">" + uriLocation);
                 if(uriLocation.indexOf("code=") != -1) {
@@ -127,7 +127,7 @@
 
 
             });
-            $(iabrowser).on('loadstop', function(uriLocation) {
+            iabrowser.addEventListener('loadstop', function(uriLocation) {
                 var $this = helper.oauth;
                 alert(">" + uriLocation);
                 if(uriLocation.indexOf("code=") != -1) {
