@@ -93,7 +93,7 @@
 			// Now open new browser
             var iabrowser = window.open(authUri, '_blank', 'location=yes');
             //iabrowser.addEventListener('loadstart', $this.onAuthUrlChange);
-            $(iabrowser).on('loadstart', function(uriLocation) {
+            $(iabrowser).on('loadstop', function(uriLocation) {
                 var $this = helper.oauth;
 
                 if(uriLocation.indexOf("code=") != -1) {
