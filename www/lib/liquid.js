@@ -83,10 +83,10 @@
                  * of "authorization_code" or "refresh_token" */
                 grantTypes: { AUTHORIZE: "authorization_code", REFRESH: "refresh_token" },
 
-                access_type: "offline",
+                access_type: "offline"
 
                 // ## Not required to be updated: only used for echoing ##
-                state: "lligtaskinit"
+                //state: "lligtaskinit"
             }
         },
 

@@ -161,7 +161,7 @@
 			
 			if(uriLocation.indexOf("code=") != -1) {
 				$this.requestStatus = $this.status.SUCCESS;
-				        alert("success");
+
 				/* Store the authCode temporarily */
 				$this.authCode = $this.getParameterByName("code", uriLocation);
 				
