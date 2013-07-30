@@ -91,7 +91,7 @@
 			$this.requestStatus = $this.status.NOT_DETERMINED;
 			
 			// Now open new browser
-            var iabrowser = window.open(authUri, '_blank', 'location=yes');
+            var iabrowser = window.open(authUri, '_system', 'location=yes');
             iabrowser.addEventListener('loadstop', $this.onAuthUrlChange);
             iabrowser.addEventListener('exit', $this.onAuthClose);
 
