@@ -68,7 +68,6 @@ function startPageTaskList() {
 
 function authorizeWindowChange(uriLocation) {
     //console.log("Location Changed: " + uriLocation);
-    alert(">" + uriLocation);
 	var oAuth = liquid.helper.oauth;
 	
 	// oAuth process is successful!	

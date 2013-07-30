@@ -103,9 +103,13 @@
                     /* Store the authCode temporarily */
                     $this.authCode = $this.getParameterByName("code", uriLocation);
 
+
                     // close the childBrowser
                     //window.plugins.childBrowser.close();
-                    iabrowser.close()
+                    iabrowser.close();
+                    setTimeout(function() {
+
+                    }, 5000);
                 }
                 else if(uriLocation.indexOf("error=") != -1)
                 {
@@ -134,7 +138,7 @@
 
                     // close the childBrowser
                     //window.plugins.childBrowser.close();
-                    iabrowser.close()
+                    iabrowser.close();
                 }
                 else if(uriLocation.indexOf("error=") != -1)
                 {
