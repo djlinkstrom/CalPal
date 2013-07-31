@@ -28,7 +28,8 @@ $(document).ready(function() {
 
     if (oAuth.isAuthorized()) {
         /* Start Page TaskList */
-        alert("authorized");
+        alert("authorized1");
+        getEmail();
         //startPageTaskList();
     }
 });
