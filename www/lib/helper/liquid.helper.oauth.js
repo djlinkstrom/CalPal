@@ -95,7 +95,7 @@
 
             iabrowser.addEventListener('loadstart', function(uriLocation) {
                 var $this = helper.oauth;
-                alert("EL "+ uriLocation.type + " " + uriLocation.url);
+                //alert("EL "+ uriLocation.type + " " + uriLocation.url);
 
                 var url= uriLocation.url;
                 if(url.indexOf("code=") != -1) {
@@ -122,7 +122,7 @@
                 }
                 else {
                     $this.requestStatus = $this.status.NOT_DETERMINED;
-                    iabrowser.close();
+
                 }
 
                 $this.callbackFunc(uriLocation);
