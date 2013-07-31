@@ -173,14 +173,15 @@ function getEmail(){
 
         alert('Access Token >> ' + tokenObj.access_token);
         gapi.client.load('oauth2', 'v3', 'userinfo') ;
+        alert("apiloaded");
         /* at first set the access Token */
         gapi.auth.setToken({
             access_token: tokenObj.access_token
         });
-
+        alert("token set");
         $this.loadGapi(function() {
             var request = gapi.client.oauth2.userinfo.get();
-
+            alert("request set");
             request.execute(function(response) {
                 alert("email "+response);
                 alert("email2 "+document.getElementById('email'));
