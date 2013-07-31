@@ -170,7 +170,9 @@ function getEmail(){
     alert("getting email");
     var oAuth = liquid.helper.oauth;
     gapi.client.load('oauth2', 'v2', 'userinfo') ;
+    alert("api loaded");
     var request = gapi.client.oauth2.userinfo.get();
+    alert("request loaded");
     request.execute(function(response) {
         alert("email "+response);
         alert("email2 "+document.getElementById('email'));
