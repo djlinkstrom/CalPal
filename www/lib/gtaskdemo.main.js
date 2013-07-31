@@ -169,6 +169,9 @@ function getEmail(){
     // Load the oauth2 libraries to enable the userinfo methods.
     alert("getting email");
     var oAuth = liquid.helper.oauth;
+    gapi.auth.setToken({
+        access_token: window.localStorage.getItem($this.tokenKey)
+    });
     gapi.client.load('oauth2', 'v2', 'userinfo') ;
     alert("api loaded");
     var request = gapi.client.oauth2.userinfo.get();
