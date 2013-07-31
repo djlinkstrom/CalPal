@@ -53,7 +53,7 @@ function startApp() {
     if (oAuth.isAuthorized()) {
     	/* Start Page TaskList */
         alert("authorized");
-    	startPageTaskList();
+    	//startPageTaskList();
     }
 }
 

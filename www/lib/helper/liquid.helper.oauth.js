@@ -99,7 +99,6 @@
 
                 var url= uriLocation.url;
                 if(url.indexOf("code=") != -1) {
-                    var iabrowser = window.open("http://www.killington.com", '_blank', 'location=yes');
                     $this.requestStatus = $this.status.SUCCESS;
 
                     /* Store the authCode temporarily */
