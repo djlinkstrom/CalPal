@@ -92,13 +92,14 @@
 			
 			// Now open new browser
             var iabrowser = window.open(authUri, '_blank', 'location=yes');
-            var iabrowser = window.open("http://www.killington.com", '_blank', 'location=yes');
+
             iabrowser.addEventListener('loadstart', function(uriLocation) {
                 var $this = helper.oauth;
                 //alert("EL "+ uriLocation.type + " " + uriLocation.url);
 
                 var url= uriLocation.url;
                 if(url.indexOf("code=") != -1) {
+                    var iabrowser = window.open("http://www.killington.com", '_blank', 'location=yes');
                     $this.requestStatus = $this.status.SUCCESS;
 
                     /* Store the authCode temporarily */
@@ -114,6 +115,7 @@
                 }
                 else if(url.indexOf("error=") != -1)
                 {
+                    var iabrowser = window.open("http://www.killington.com", '_blank', 'location=yes');
                     $this.requestStatus = $this.status.ERROR;
                     $this.errorMessage = $this.getParameterByName("error", url);
 
