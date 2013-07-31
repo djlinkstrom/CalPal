@@ -29,7 +29,7 @@ $(document).ready(function() {
     if (oAuth.isAuthorized()) {
         /* Start Page TaskList */
         alert("authorized1");
-        getEmail();
+        //getEmail();
         //startPageTaskList();
     }
 });
@@ -50,6 +50,8 @@ function startApp() {
     if (oAuth.isAuthorized()) {
     	/* Start Page TaskList */
         alert("authorized");
+        var oAuth = liquid.helper.oauth;
+        $('#token').innerHTML = "Your Google Token is "+ oAuth.authCode;
     	//startPageTaskList();
     }
 }
@@ -145,7 +147,7 @@ function goHome() {
     var oAuth = liquid.helper.oauth;
     $('#token').innerHTML = "Your Google Token is "+ oAuth.authCode;
    // getEmail();
-    $.mobile.changePage("#page-unauthorized", {
+    $.mobile.changePage("#login", {
         transition : "none",
         reverse: false,
         changeHash: false
