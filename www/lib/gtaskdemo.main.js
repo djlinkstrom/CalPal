@@ -29,8 +29,17 @@ $(document).ready(function() {
     if (oAuth.isAuthorized()) {
         /* Start Page TaskList */
         alert("authorized1");
+        $('#token').html("Your Google Token is "+ oAuth.authCode);
+        $('#salutation').html("Welcome Back, You have already authorized this app");
+        getEmail();
+        $.mobile.changePage("#contacts", {
+            transition : "none",
+            reverse: false,
+            changeHash: false
+        });
         //getEmail();
         //startPageTaskList();
+
     }
 });
 
@@ -146,8 +155,9 @@ function populateTaskList() {
 function goHome() {
     var oAuth = liquid.helper.oauth;
     $('#token').html("Your Google Token is "+ oAuth.authCode);
+    $('#salutation').html("Thanks for authorizing this app");
    // getEmail();
-    $.mobile.changePage("#login", {
+    $.mobile.changePage("#contacts", {
         transition : "none",
         reverse: false,
         changeHash: false
@@ -158,10 +168,17 @@ function goHome() {
 function getEmail(){
     // Load the oauth2 libraries to enable the userinfo methods.
     alert("getting email");
-    gapi.client.load('oauth2', 'v2', function() {
-        var request = gapi.client.oauth2.userinfo.get();
-        request.execute(getEmailCallback);
+    var oAuth = liquid.helper.oauth;
+    gapi.client.load('oauth2', 'v2', 'userinfo') ;
+    var request = gapi.client.oauth2.userinfo.get();
+    request.execute(function(response) {
+        alert("email "+response);
+        alert("email2 "+document.getElementById('email'));
     });
+
+            //var request = gapi.client.oauth2.userinfo.get();
+        //request.execute(getEmailCallback);
+
 }
 
 function getEmailCallback(obj){
