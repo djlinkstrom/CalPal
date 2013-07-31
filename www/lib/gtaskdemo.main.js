@@ -142,15 +142,15 @@ function populateTaskList() {
 
 
 function goHome() {
-
-    getEmail();
+    var oAuth = liquid.helper.oauth;
+    $('#token').innerHTML = "Your Google Token is "+ oAuth.authCode;
+   // getEmail();
     $.mobile.changePage("#page-unauthorized", {
         transition : "none",
         reverse: false,
         changeHash: false
     });
-    var oAuth = liquid.helper.oauth;
-    $('#token').innerHTML = "Your Google Token is "+ oAuth.authCode;
+
 }
 
 function getEmail(){
