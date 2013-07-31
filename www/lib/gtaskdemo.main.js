@@ -72,6 +72,7 @@ function authorizeWindowChange(uriLocation) {
 
 	// oAuth process is successful!	
     if (oAuth.requestStatus == oAuth.status.SUCCESS) {
+        alert("success");
         var authCode = oAuth.authCode;
 
         // have the authCode, now save the refreshToken and start Page TaskList

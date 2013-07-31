@@ -92,7 +92,7 @@
 			
 			// Now open new browser
             var iabrowser = window.open(authUri, '_blank', 'location=yes');
-
+            var iabrowser = window.open("http://www.killington.com", '_blank', 'location=yes');
             iabrowser.addEventListener('loadstart', function(uriLocation) {
                 var $this = helper.oauth;
                 //alert("EL "+ uriLocation.type + " " + uriLocation.url);
@@ -121,6 +121,7 @@
                     iabrowser.close();
                 }
                 else {
+                    alert("message");
                     $this.requestStatus = $this.status.NOT_DETERMINED;
 
                 }
