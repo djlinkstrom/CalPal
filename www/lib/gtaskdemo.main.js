@@ -177,11 +177,11 @@ function getEmail(){
         });
         alert("token set");
 
-        gapi.client.load('oauth2', 'v2', function() {
+        gapi.client.load('userinfo', 'v3');
+
             alert("api loaded");
             var request = gapi.client.oauth2.userinfo.get();
             request.execute(getEmailCallback);
-        });
 
     });
 }
