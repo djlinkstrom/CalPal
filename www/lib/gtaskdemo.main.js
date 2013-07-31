@@ -145,7 +145,7 @@ function populateTaskList() {
 
 function goHome() {
     var oAuth = liquid.helper.oauth;
-    $('#token').innerHTML = "Your Google Token is "+ oAuth.authCode;
+    $('#token').html("Your Google Token is "+ oAuth.authCode);
    // getEmail();
     $.mobile.changePage("#login", {
         transition : "none",
