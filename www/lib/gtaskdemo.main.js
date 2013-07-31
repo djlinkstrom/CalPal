@@ -179,14 +179,13 @@ function getEmail(){
             access_token: tokenObj.access_token
         });
         alert("token set");
-        $this.loadGapi(function() {
             var request = gapi.client.oauth2.userinfo.get();
             alert("request set");
             request.execute(function(response) {
                 alert("email "+response);
                 alert("email2 "+document.getElementById('email'));
             });
-        });
+
     });
 
 
