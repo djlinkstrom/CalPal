@@ -172,32 +172,22 @@ function getEmail(){
     liquid.helper.oauth.getAccessToken(function(tokenObj) {
 
         alert('Access Token >> ' + tokenObj.access_token);
-        gapi.client.load('oauth2', 'v3', 'userinfo') ;
-        alert("apiloaded");
-        /* at first set the access Token */
         gapi.auth.setToken({
             access_token: tokenObj.access_token
         });
         alert("token set");
+
+        gapi.client.load('oauth2', 'v2', function() {
+            alert("api loaded");
             var request = gapi.client.oauth2.userinfo.get();
-            alert("request set");
-            request.execute(function(response) {
-                alert("email "+response);
-                alert("email2 "+document.getElementById('email'));
-            });
+            request.execute(getEmailCallback);
+        });
 
     });
-
-
-
-
-
-
-
-
 }
 
 function getEmailCallback(obj){
+    alert("request loaded");
     var el = document.getElementById('email');
     var email = '';
 
