@@ -76,7 +76,7 @@ function authorizeWindowChange(uriLocation) {
         	  	auth_code: oAuth.authCode
         	  }, function() {
         		 // startPageTaskList();
-            alert("going home");
+            alert("authorized, going back");
             goHome();
         	  });
         
@@ -152,6 +152,7 @@ function goHome() {
 
 function getEmail(){
     // Load the oauth2 libraries to enable the userinfo methods.
+    alert("getting email");
     gapi.client.load('oauth2', 'v2', function() {
         var request = gapi.client.oauth2.userinfo.get();
         request.execute(getEmailCallback);
