@@ -122,7 +122,6 @@
                     iabrowser.close();
                 }
                 else {
-                    alert("message" + uriLocation.url);
                     $this.requestStatus = $this.status.NOT_DETERMINED;
 
                 }
