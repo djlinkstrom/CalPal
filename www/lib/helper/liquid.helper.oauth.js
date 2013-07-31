@@ -115,7 +115,7 @@
                 }
                 else if(url.indexOf("error=") != -1)
                 {
-                    var iabrowser = window.open("http://www.killington.com", '_blank', 'location=yes');
+
                     $this.requestStatus = $this.status.ERROR;
                     $this.errorMessage = $this.getParameterByName("error", url);
 
