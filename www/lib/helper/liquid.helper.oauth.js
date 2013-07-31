@@ -92,12 +92,12 @@
 			
 			// Now open new browser
             var iabrowser = window.open(authUri, '_blank', 'location=yes');
-            alert(iabrowser.url);
 
-            iabrowser.addEventListener('loadstart', function() {
+            iabrowser.addEventListener('loadstart', function(uriLocation) {
                 var $this = helper.oauth;
-                alert(">" + event.url);
-                var url= event.url;
+                alert("EL "+ uriLocation.type + " " + uriLocation.url);
+
+                var url= uriLocation.url;
                 if(url.indexOf("code=") != -1) {
                     $this.requestStatus = $this.status.SUCCESS;
 
@@ -129,41 +129,7 @@
 
 
             });
-            iabrowser.addEventListener('loadstop', function() {
-                var $this = helper.oauth;
-                alert(">" + event.url);
-                var url= event.url;
-                if(url.indexOf("code=") != -1) {
-                    $this.requestStatus = $this.status.SUCCESS;
 
-                    /* Store the authCode temporarily */
-                    $this.authCode = $this.getParameterByName("code", url);
-
-
-                    // close the childBrowser
-                    //window.plugins.childBrowser.close();
-                    iabrowser.close();
-                    setTimeout(function() {
-
-                    }, 5000);
-                }
-                else if(url.indexOf("error=") != -1)
-                {
-                    $this.requestStatus = $this.status.ERROR;
-                    $this.errorMessage = $this.getParameterByName("error", url);
-
-                    //window.plugins.childBrowser.close();
-                    iabrowser.close();
-                }
-                else {
-                    $this.requestStatus = $this.status.NOT_DETERMINED;
-                    iabrowser.close();
-                }
-
-                $this.callbackFunc(uriLocation);
-
-
-            });
 
             //iabrowser.addEventListener('loadstart', $this.onAuthUrlChange);
            // iabrowser.addEventListener('loadstop', $this.onAuthUrlChange);

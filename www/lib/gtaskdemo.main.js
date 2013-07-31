@@ -69,7 +69,7 @@ function startPageTaskList() {
 function authorizeWindowChange(uriLocation) {
     //console.log("Location Changed: " + uriLocation);
 	var oAuth = liquid.helper.oauth;
-	
+	alert("AWC "+uriLocation)     ;
 	// oAuth process is successful!	
     if (oAuth.requestStatus == oAuth.status.SUCCESS) {
         var authCode = oAuth.authCode;
