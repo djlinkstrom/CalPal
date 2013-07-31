@@ -13,14 +13,12 @@
 
 
 $(document).ready(function() {
-    alert("in startapp3");
 	/* startApp after device ready */
 	//document.addEventListener("deviceready", startApp, false);
 
     document.addEventListener("onLoad", startApp, false);
-    alert("in startapp4");
+
     var oAuth = liquid.helper.oauth;
-    alert("in startapp");
     $("#access-code").click(function(event) {
         //liquid.helper.oauth.authorize(goHome);
         liquid.helper.oauth.authorize(authorizeWindowChange);
@@ -31,7 +29,7 @@ $(document).ready(function() {
     if (oAuth.isAuthorized()) {
         /* Start Page TaskList */
         alert("authorized");
-        startPageTaskList();
+        //startPageTaskList();
     }
 });
 
@@ -40,9 +38,7 @@ $(document).ready(function() {
  * Start the App
  */
 function startApp() {
-    alert("in startapp2");
 	var oAuth = liquid.helper.oauth;
-	   alert("in startapp");
     $("#access-code").click(function(event) {
         //liquid.helper.oauth.authorize(goHome);
         liquid.helper.oauth.authorize(authorizeWindowChange);
@@ -145,13 +141,35 @@ function populateTaskList() {
 
 
 function goHome() {
-	
+	     getEmail();
     $.mobile.changePage("#page-unauthorized", {
         transition : "none",
         reverse: false,
         changeHash: false
     });
     
+}
+
+function getEmail(){
+    // Load the oauth2 libraries to enable the userinfo methods.
+    gapi.client.load('oauth2', 'v2', function() {
+        var request = gapi.client.oauth2.userinfo.get();
+        request.execute(getEmailCallback);
+    });
+}
+
+function getEmailCallback(obj){
+    var el = document.getElementById('email');
+    var email = '';
+
+    if (obj['email']) {
+        email = 'Email: ' + obj['email'];
+    }
+
+    //console.log(obj);   // Uncomment to inspect the full object.
+
+    alert( email);
+
 }
 
 
