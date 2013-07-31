@@ -176,11 +176,12 @@ function getEmail(){
             access_token: tokenObj.access_token
         });
         alert("token set");
-
-        gapi.client.load('userinfo', 'v3');
+        gapi.client.load('oauth2', 'v2');
+        //gapi.client.load('userinfo', 'v1');
 
             alert("api loaded");
             var request = gapi.client.oauth2.userinfo.get();
+        alert("request loaded");
             request.execute(getEmailCallback);
 
     });
