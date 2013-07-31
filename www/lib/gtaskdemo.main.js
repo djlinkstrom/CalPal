@@ -168,23 +168,32 @@ function goHome() {
 function getEmail(){
     // Load the oauth2 libraries to enable the userinfo methods.
     alert("getting email");
-    var tokenValue = window.localStorage.getItem($this.tokenKey);
-    alert("token value" + tokenValue);
-    var oAuth = liquid.helper.oauth;
-    gapi.auth.setToken({
-        access_token: tokenValue
-    });
-    gapi.client.load('oauth2', 'v1', 'userinfo') ;
-    alert("api loaded");
-    var request = gapi.client.oauth2.userinfo.get();
-    alert("request loaded");
-    request.execute(function(response) {
-        alert("email "+response);
-        alert("email2 "+document.getElementById('email'));
+
+    liquid.helper.oauth.getAccessToken(function(tokenObj) {
+
+        alert('Access Token >> ' + tokenObj.access_token);
+        gapi.client.load('oauth2', 'v3', 'userinfo') ;
+        /* at first set the access Token */
+        gapi.auth.setToken({
+            access_token: tokenObj.access_token
+        });
+
+        $this.loadGapi(function() {
+            var request = gapi.client.oauth2.userinfo.get();
+
+            request.execute(function(response) {
+                alert("email "+response);
+                alert("email2 "+document.getElementById('email'));
+            });
+        });
     });
 
-            //var request = gapi.client.oauth2.userinfo.get();
-        //request.execute(getEmailCallback);
+
+
+
+
+
+
 
 }
 
