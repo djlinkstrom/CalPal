@@ -176,20 +176,21 @@ function getEmail(){
             access_token: tokenObj.access_token
         });
         alert("token set");
-        gapi.client.load('oauth2', 'v2');
-        //gapi.client.load('userinfo', 'v1');
 
-            alert("api loaded");
+
+        gapi.client.load('oauth2', 'v2', function() {
+            alert("api set");
             var request = gapi.client.oauth2.userinfo.get();
-        alert("request loaded");
+            alert("request set");
             request.execute(getEmailCallback);
+        });
 
     });
 }
 
 function getEmailCallback(obj){
     alert("request loaded");
-    var el = document.getElementById('email');
+    //var el = document.getElementById('email');
     var email = '';
 
     if (obj['email']) {
