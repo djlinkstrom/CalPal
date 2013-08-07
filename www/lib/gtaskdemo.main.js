@@ -146,11 +146,11 @@ function getCalendarList(){
         gapi.auth.setToken({
             access_token: tokenObj.access_token
         });
-        alert("token set");
+        alert("token set" + gapi.auth.getToken());
         gapi.client.load('calendar', 'v3', function() {
             alert("api loaded");
             var request = gapi.client.calendar.events.list({
-                'calendarId': 'primary'
+                calendarId: 'primary'
             });
             alert("request loaded");
         });
