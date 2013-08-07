@@ -50,6 +50,7 @@
         },
 
         getList: function(callback) {
+            alert("in get list");
             var $this = model.calendar;
 
             liquid.helper.oauth.getAccessToken(function(tokenObj) {

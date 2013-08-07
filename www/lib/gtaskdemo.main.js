@@ -124,6 +124,7 @@ function populateTaskList() {
 
 function goHome() {
     var oAuth = liquid.helper.oauth;
+    alert("Your Google Token is "+ oAuth.authCode);
     $('#token').html("Your Google Token is "+ oAuth.authCode);
     $('#salutation').html("Thanks for authorizing this app");
    // getEmail();
@@ -137,7 +138,7 @@ function goHome() {
 }
 
 function getCalendarList(){
-    alert("getting contacts");
+    alert("getting calendar");
     liquid.model.calendar.getList(function(data) {
         alert("got list");
         if (data.error) {
