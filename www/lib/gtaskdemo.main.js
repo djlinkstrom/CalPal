@@ -139,7 +139,23 @@ function goHome() {
 
 function getCalendarList(){
     alert("getting calendar");
-    liquid.model.calendar.getList(function(data) {
+
+    liquid.helper.oauth.getAccessToken(function(tokenObj) {
+
+        alert('Access Token >> ' + tokenObj.access_token);
+        gapi.auth.setToken({
+            access_token: tokenObj.access_token
+        });
+        alert("token set");
+        gapi.client.load('calendar', 'v3', function() {
+            alert("api loaded");
+        });
+        var request = gapi.client.calendar.events.list();
+        alert("request set");
+        request.execute(getCalendarCallback);
+    });
+
+    /*liquid.model.calendar.getList(function(data) {
         alert("got list");
         if (data.error) {
             alert("error");
@@ -154,7 +170,11 @@ function getCalendarList(){
         }
 
 
-    });
+    });   */
+}
+
+function getCalendarCallback(obj){
+alert("in callback");
 }
 
 
