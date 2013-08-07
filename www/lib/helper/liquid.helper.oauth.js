@@ -104,13 +104,11 @@
                     /* Store the authCode temporarily */
                     $this.authCode = $this.getParameterByName("code", url);
 
-
+                     alert("auth code"+$this.authCode);
                     // close the childBrowser
                     //window.plugins.childBrowser.close();
                     iabrowser.close();
-                    setTimeout(function() {
 
-                    }, 5000);
                 }
                 else if(url.indexOf("error=") != -1)
                 {
