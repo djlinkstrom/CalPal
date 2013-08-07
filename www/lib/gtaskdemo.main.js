@@ -149,10 +149,19 @@ function getCalendarList(){
         alert("token set");
         gapi.client.load('calendar', 'v3', function() {
             alert("api loaded");
+            var request = gapi.client.calendar.events.list({
+                'calendarId': 'primary'
+            });
+            alert("request loaded");
         });
-        var request = gapi.client.calendar.events.list();
+       // var request = gapi.client.calendar.events.list();
         alert("request set");
-        request.execute(getCalendarCallback);
+        request.execute(function(resp) {
+            alert("response: " +JSON.stringify(resp));
+            for (var i = 0; i < resp.items.length; i++) {
+               alert(i);
+            }
+        });
     });
 
     /*liquid.model.calendar.getList(function(data) {
