@@ -137,11 +137,13 @@ function goHome() {
 
 function getCalendarList(){
     alert("getting contacts");
-    liquid.model.tasks.getList(function(data) {
+    liquid.model.calendar.getList(function(data) {
+        alert("got list");
         if (data.error) {
             alert("error");
             return;
         }
+        alert("no error");
         for (var i = 0; i < data.items.length; i++) {
 
             var item = data.items[i];

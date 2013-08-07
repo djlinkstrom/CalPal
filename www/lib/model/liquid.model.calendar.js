@@ -31,6 +31,7 @@
          *                            loading of Google API is complete.
          */
         loadGapi : function(callback) {
+            alert("load api");
             var $this = model.calendar;
 
             if ($this.isGapiLoaded) {
@@ -58,7 +59,7 @@
                 gapi.auth.setToken({
                     access_token: tokenObj.access_token
                 });
-
+                  alert("token set");
                 $this.loadGapi(function() {
                     var request = gapi.client.calendar.events.list({
 
