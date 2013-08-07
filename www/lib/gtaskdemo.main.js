@@ -31,7 +31,8 @@ $(document).ready(function() {
         alert("authorized1");
         $('#token').html("Your Google Token is "+ oAuth.authCode);
         $('#salutation').html("Welcome Back, You have already authorized this app");
-        getEmail();
+        getCalendarList();
+        //getEmail();
         $.mobile.changePage("#contacts", {
             transition : "none",
             reverse: false,
