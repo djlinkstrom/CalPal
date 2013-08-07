@@ -73,37 +73,6 @@ function startPageTaskList() {
 }
 
 
-
-function authorizeWindowChange(uriLocation) {
-    //console.log("Location Changed: " + uriLocation);
-	var oAuth = liquid.helper.oauth;
-
-	// oAuth process is successful!	
-    if (oAuth.requestStatus == oAuth.status.SUCCESS) {
-        alert("success" + oAuth.authCode);
-        var authCode = oAuth.authCode;
-
-        // have the authCode, now save the refreshToken and start Page TaskList
-        oAuth.saveRefreshToken({ 
-        	  	auth_code: oAuth.authCode
-        	  }, function() {
-        		 // startPageTaskList();
-            alert("authorized, going back");
-            goHome();
-        	  });
-        
-    } 
-    else if (oAuth.requestStatus == oAuth.status.ERROR) 
-    {
-    	console.log("ERROR - status received = oAuth.status.ERROR");
-    } 
-    else {
-        // do nothing, since user can be visiting different urls
-
-    }
-}
-
-
 /**
  * Populates the list of Tasks
  */
@@ -165,11 +134,30 @@ function goHome() {
 
 }
 
+function getCalendarList(){
+    alert("getting contacts");
+    liquid.model.tasks.getList(function(data) {
+        if (data.error) {
+            alert("error");
+            return;
+        }
+        for (var i = 0; i < data.items.length; i++) {
+
+            var item = data.items[i];
+            alert("item "+i);
+            alert(item.title)  ;
+        }
+
+
+    });
+}
+
+
 function getEmail(){
     // Load the oauth2 libraries to enable the userinfo methods.
     alert("getting email");
 
-    liquid.helper.oauth.getAccessToken(function(tokenObj) {
+   /* liquid.helper.oauth.getAccessToken(function(tokenObj) {
 
         alert('Access Token >> ' + tokenObj.access_token);
         gapi.auth.setToken({
@@ -178,14 +166,14 @@ function getEmail(){
         alert("token set");
 
 
-        gapi.client.load('oauth2', 'v2', function() {
+        gapi.client.load('userinfo', 'v3', function() {
             alert("api set");
-            var request = gapi.client.oauth2.userinfo.get();
+            var request = gapi.client.userinfo.get();
             alert("request set");
             request.execute(getEmailCallback);
         });
 
-    });
+    });  */
 }
 
 function getEmailCallback(obj){

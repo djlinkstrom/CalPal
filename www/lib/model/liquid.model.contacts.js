@@ -1,36 +1,15 @@
-
 /**
- * A Sample Model for Tasks.
- *
- *
- * This file requires the following to be included:
- *
- * @requires cordova.js (Phonegap library)
- * @requires jquery.js (jquery library)
- * @requires gapi-client.min.js (google API JS Client)
- * @requires liquid.js (The Base library)
- * @requires liquid.helper.oauth.js (the oauth helper method)
- *
- *
- * Google APIs Explorer (for the class/json names of google api)
- * https://developers.google.com/apis-explorer/
- *
- * @author Abdullah Rubiyath
- * @author Hossain Khan
- *
- * @copyright Liquid Labs Inc.
- *
+ * Created with JetBrains WebStorm.
+ * User: User
+ * Date: 8/6/13
+ * Time: 9:13 PM
+ * To change this template use File | Settings | File Templates.
  */
 
-/**
- * Adds a Model called Tasks (for Google Tasks)
- * to the model attribute/property of liquid
- *
- * @param model The Model of liquid to be extended from.
- */
+
 (function(model) {
 
-    model.tasks = {
+    model.contacts = {
 
         isGapiLoaded : false,
         gapiConfig: liquid.config.gapi,
@@ -45,14 +24,14 @@
          *                            loading of Google API is complete.
          */
         loadGapi : function(callback) {
-            var $this = model.userinfo;
+            var $this = model.contacts;
 
             if ($this.isGapiLoaded) {
                 callback();
             }
             else {
                 /* load the google api and then invoke callback */
-                gapi.client.load('tasks', 'v1', function() {
+                gapi.client.load('contacts', 'v3', function() {
                         $this.isGapiLoaded = true;
                         if (callback) {
                             callback();
@@ -62,24 +41,12 @@
             }
         },
 
-
-        /**
-         * Gets the list of Tasks associated with a TaskList
-         * Reference:
-         * https://developers.google.com/google-apps/tasks/v1/reference/tasks/list
-         *
-         * Uses Google API to Connect to Google's Server
-         *
-         * @param callback A callback function which is invoked when data is received
-         *                 from Google's Server.
-         *
-         */
         getList: function(callback) {
-            var $this = model.tasks;
+            var $this = model.contacts;
 
             liquid.helper.oauth.getAccessToken(function(tokenObj) {
 
-                console.log('Access Token >> ' + tokenObj.access_token);
+                //console.log('Access Token >> ' + tokenObj.access_token);
                 /* at first set the access Token */
                 gapi.auth.setToken({
                     access_token: tokenObj.access_token
@@ -97,6 +64,9 @@
         }
 
 
-    } // end of liquid.model.tasks
+
+
+
+    } // end of liquid.model.contacts
 
 })(window.liquid.model);
