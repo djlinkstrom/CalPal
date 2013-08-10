@@ -174,8 +174,10 @@ function getCalendarList(){
                 });
                 request.execute(function(obj){
                     alert("Darren");
-                    alert(obj.Name.formatted);
                     alert(Object.prototype.toString.call(obj).replace(/^\[object (.+)\]$/,"$1").toLowerCase());
+                    alert("test");
+                    alert(obj.Name.formatted);
+
                     /*alert(obj['email']);
                     if (obj['email']) {
                         email = 'Email: ' + obj['email'];
