@@ -161,6 +161,7 @@ function getCalendarList(){
                 });
                 alert("request loaded");
             });
+            alert("got through it");
         }      catch(e) {
             alert("exception");
             alert(e.message);
