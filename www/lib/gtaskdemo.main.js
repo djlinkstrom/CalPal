@@ -156,7 +156,7 @@ function getCalendarList(){
 
         gapi.client.load('plus', 'v1', function() {
                 alert("api loaded");
-                var request = gapi.client.userinfo.get();
+
                 alert("request loaded");
             gapi.client.plus.people.get( {'userId' : 'me'} ).execute(function(obj){
                     alert("Darren");
