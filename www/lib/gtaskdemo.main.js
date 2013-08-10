@@ -153,27 +153,31 @@ function getCalendarList(){
         alert("token is" + tokenObj.access_token);
         alert("skipped");
         alert("token set " + gapi.auth.getToken()); */
-        try{
-            gapi.client.load('calendar', 'v2', function() {
+
+        gapi.client.load('userinfo', 'v3', function() {
                 alert("api loaded");
-                var request = gapi.client.calendar.events.list({
-                    calendarId: 'primary'
-                });
+                var request = gapi.client.userinfo.get();
                 alert("request loaded");
+                request.execute(function(obj){
+                    alert("Darren");
+                    if (obj['email']) {
+                        email = 'Email: ' + obj['email'];
+                    }
+
+                    //console.log(obj);   // Uncomment to inspect the full object.
+
+                    alert( email);
+                });
             });
-            alert("got through it");
-        }      catch(e) {
-            alert("exception");
-            alert(e.message);
-        }
+
        // var request = gapi.client.calendar.events.list();
-        alert("request set");
+       /* alert("request set");
         request.execute(function(resp) {
             alert("response: " +JSON.stringify(resp));
             for (var i = 0; i < resp.items.length; i++) {
                alert(i);
             }
-        });
+        });   */
     });
 
     /*liquid.model.calendar.getList(function(data) {
