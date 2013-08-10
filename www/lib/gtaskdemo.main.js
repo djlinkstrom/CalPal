@@ -148,6 +148,7 @@ function getCalendarList(){
         /*gapi.auth.setToken({
             access_token: tokenObj.access_token
         });     */
+        gapi.auth.setToken(tokenObj.access_token);
         alert("skipped");
         alert("token set" + gapi.auth.getToken());
         gapi.client.load('calendar', 'v2', function() {
