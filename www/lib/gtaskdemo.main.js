@@ -142,15 +142,14 @@ function getCalendarList(){
     liquid.helper.oauth.getAccessToken(function(tokenObj) {
 
         alert('Access Token is >> ' + tokenObj.access_token);
-
-        /*gapi.auth.setToken({
+           alert("gapi.auth toke is "+gapi.auth.getToken());
+        gapi.auth.setToken({
             access_token: tokenObj.access_token
         });
-        gapi.auth.setToken(tokenObj);
+        //gapi.auth.setToken(tokenObj);
 
-        alert("token is" + tokenObj.access_token);
         alert("skipped");
-        alert("token set " + gapi.auth.getToken()); */
+        alert("token set " + gapi.auth.getToken());
 
        /* gapi.client.load('plus', 'v1', function() {
                 alert("api loaded");
