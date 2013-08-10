@@ -139,14 +139,20 @@ function goHome() {
 }
 
 function getCalendarList(){
+
     liquid.helper.oauth.getAccessToken(function(tokenObj) {
 
         alert('Access Token is >> ' + tokenObj.access_token);
-           alert("gapi.auth toke is "+gapi.auth.getToken());
-        gapi.auth.setToken({
-            access_token: tokenObj.access_token
-        });
-        //gapi.auth.setToken(tokenObj);
+           //alert("gapi.auth toke is "+gapi.auth.getToken());
+        /*try{
+            gapi.auth.setToken({
+                access_token: tokenObj.access_token
+            });
+        }
+        catch(e){
+            alert("exception");
+        }
+        //gapi.auth.setToken(tokenObj);   */
 
         alert("skipped");
         alert("token set " + gapi.auth.getToken());
