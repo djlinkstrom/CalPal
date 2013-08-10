@@ -154,11 +154,11 @@ function getCalendarList(){
         alert("skipped");
         alert("token set " + gapi.auth.getToken()); */
 
-        gapi.client.load('userinfo', 'v3', function() {
+        gapi.client.load('plus', 'v1', function() {
                 alert("api loaded");
                 var request = gapi.client.userinfo.get();
                 alert("request loaded");
-                request.execute(function(obj){
+            gapi.client.plus.people.get( {'userId' : 'me'} ).execute(function(obj){
                     alert("Darren");
                     if (obj['email']) {
                         email = 'Email: ' + obj['email'];
