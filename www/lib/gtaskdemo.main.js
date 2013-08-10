@@ -160,13 +160,7 @@ function getCalendarList(){
                 alert("request loaded");
             gapi.client.plus.people.get( {'userId' : 'me'} ).execute(function(obj){
                     alert("Darren");
-                    if (obj['email']) {
-                        email = 'Email: ' + obj['email'];
-                    }
 
-                    //console.log(obj);   // Uncomment to inspect the full object.
-
-                    alert( email);
                 });
             });
 
