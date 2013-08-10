@@ -163,6 +163,7 @@ function getCalendarList(){
             });
         }      catch(e) {
             alert("exception");
+            alert(e.message);
         }
        // var request = gapi.client.calendar.events.list();
         alert("request set");
