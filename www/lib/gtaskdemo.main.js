@@ -139,8 +139,6 @@ function goHome() {
 }
 
 function getCalendarList(){
-    alert("getting calendar");
-
     liquid.helper.oauth.getAccessToken(function(tokenObj) {
 
         alert('Access Token is >> ' + tokenObj.access_token);
@@ -157,10 +155,9 @@ function getCalendarList(){
         gapi.client.load('plus', 'v1', function() {
                 alert("api loaded");
 
-                alert("request loaded");
             gapi.client.plus.people.get( {'userId' : 'me'} ).execute(function(obj){
                     alert("Darren");
-
+                    alert(obj.displayName);
                 });
             });
 
