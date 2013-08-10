@@ -175,6 +175,7 @@ function getCalendarList(){
                 request.execute(function(obj){
                     alert("Darren");
                     alert("obj name "+obj.displayName);
+                    alert("obj type"+obj.kind);
                     alert("test");
                     /*alert(obj['email']);
                     if (obj['email']) {
