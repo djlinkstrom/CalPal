@@ -153,13 +153,17 @@ function getCalendarList(){
         alert("token is" + tokenObj.access_token);
         alert("skipped");
         alert("token set " + gapi.auth.getToken()); */
-        gapi.client.load('calendar', 'v2', function() {
-            alert("api loaded");
-            var request = gapi.client.calendar.events.list({
-                calendarId: 'primary'
+        try{
+            gapi.client.load('calendar', 'v2', function() {
+                alert("api loaded");
+                var request = gapi.client.calendar.events.list({
+                    calendarId: 'primary'
+                });
+                alert("request loaded");
             });
-            alert("request loaded");
-        });
+        }      catch(e) {
+            alert("exception");
+        }
        // var request = gapi.client.calendar.events.list();
         alert("request set");
         request.execute(function(resp) {
