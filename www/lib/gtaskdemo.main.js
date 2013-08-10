@@ -165,15 +165,22 @@ function getCalendarList(){
 
 
             // Load the oauth2 libraries to enable the userinfo methods.
-            gapi.client.load('oauth2', 'v2', function() {
+           // gapi.client.load('oauth2', 'v2', function() {
+        gapi.client.load('plus', 'v1', function() {
                 alert("api loaded");
-                var request = gapi.client.oauth2.userinfo.get();
+               // var request = gapi.client.oauth2.userinfo.get();
+                var request = gapi.client.plus.people.get({
+                    'userId': 'me'
+                });
                 request.execute(function(obj){
                     alert("Darren");
+                    alert(obj.Name.formatted);
+                    alert(Object.prototype.toString.call(obj).replace(/^\[object (.+)\]$/,"$1").toLowerCase());
+                    /*alert(obj['email']);
                     if (obj['email']) {
                         email = 'Email: ' + obj['email'];
                     }
-                    alert(email);
+                    alert(email);   */
                 });
             });
 
