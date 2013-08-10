@@ -29,6 +29,7 @@ $(document).ready(function() {
     if (oAuth.isAuthorized()) {
         /* Start Page TaskList */
         alert("authorized1");
+
         /*
         $('#token').html("Your Google Token is "+ oAuth.authCode);
         $('#salutation').html("Welcome Back, You have already authorized this app");
@@ -61,7 +62,7 @@ function startApp() {
     	/* Start Page TaskList */
         alert("authorized");
         var oAuth = liquid.helper.oauth;
-        $('#token').innerHTML = "Your Google Token is "+ oAuth.authCode;
+        //$('#token').innerHTML = "Your Google Token is "+ oAuth.authCode;
     	//startPageTaskList();
     }
 }
@@ -125,8 +126,8 @@ function populateTaskList() {
 function goHome() {
     var oAuth = liquid.helper.oauth;
     alert("Your Google Token is "+ oAuth.authCode);
-    $('#token').html("Your Google Token is "+ oAuth.authCode);
-    $('#salutation').html("Thanks for authorizing this app");
+   // $('#token').html("Your Google Token is "+ oAuth.authCode);
+    //$('#salutation').html("Thanks for authorizing this app");
    // getEmail();
     /*$.mobile.changePage("#contacts", {
         transition : "none",
