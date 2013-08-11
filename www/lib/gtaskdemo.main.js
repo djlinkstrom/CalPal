@@ -45,7 +45,7 @@ $(document).ready(function() {
         oAuth.getAccessToken(function(tokenObj) {
 
             alert('Is Auth - Access Token is >> ' + tokenObj.access_token);
-            $('#token').html("Your Google Auth Code is  "+ tokenObj.access_token);
+            $('#token').html("Your Google Access Token is  "+ tokenObj.access_token);
             $('#salutation').html("Welcome Back, You have already authorized this app");
             $.mobile.changePage("#contacts", {
                 transition : "none",
@@ -138,7 +138,7 @@ function populateTaskList() {
 
 function goHome() {
     var oAuth = liquid.helper.oauth;
-    alert("Your Google Token is "+ oAuth.authCode);
+    alert("Going home with Auth Code "+ oAuth.authCode);
     getCalendarList();
 
 }
@@ -159,7 +159,9 @@ function getCalendarList(){
         }
         //gapi.auth.setToken(tokenObj);   */
 
-        alert("skipped");
+        gapi.auth.setToken({
+            access_token: tokenObj.access_token
+        });
         alert("token set " + gapi.auth.getToken());
 
        /* gapi.client.load('plus', 'v1', function() {
