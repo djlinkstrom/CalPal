@@ -8,8 +8,8 @@ $(document).ready(function() {
 
     function onSuccess(contacts) {
         alert('Found ' + contacts.length + ' contacts.');
-        for (var i=0; i<contacts.length; i++) {
-            console.log("Display Name = " + contacts[i].displayName);
+        for (var i=0; i<5; i++) {
+            alert("Display Name = " + contacts[i].displayName);
         }
     };
 
