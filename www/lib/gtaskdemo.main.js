@@ -149,19 +149,17 @@ function getCalendarList(){
 
         alert('Access Token is >> ' + tokenObj.access_token);
            //alert("gapi.auth toke is "+gapi.auth.getToken());
-        /*try{
+        try{
             gapi.auth.setToken({
                 access_token: tokenObj.access_token
             });
+            alert("no exception");
         }
         catch(e){
             alert("exception");
         }
-        //gapi.auth.setToken(tokenObj);   */
+        //gapi.auth.setToken(tokenObj);
 
-        gapi.auth.setToken({
-            access_token: tokenObj.access_token
-        });
         alert("token set " + gapi.auth.getToken());
 
        /* gapi.client.load('plus', 'v1', function() {
