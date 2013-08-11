@@ -1,7 +1,6 @@
 
 $(document).ready(function() {
     $("#device-contacts").click(function(event) {
-        alert("clicked");
         findContacts();
         //liquid.helper.oauth.authorize(authorizeWindowChange);
 
@@ -9,6 +8,9 @@ $(document).ready(function() {
 
     function onSuccess(contacts) {
         alert('Found ' + contacts.length + ' contacts.');
+        for (var i=0; i<contacts.length; i++) {
+            console.log("Display Name = " + contacts[i].displayName);
+        }
     };
 
     function onError(contactError) {
@@ -16,8 +18,9 @@ $(document).ready(function() {
     };
 
     function findContacts() {
-        alert("in contacts");
         var options = new ContactFindOptions();
+        options.filter="";
+        options.multiple=true;
         var fields = ["displayName", "name"];
         navigator.contacts.find(fields,onSuccess, onError, options);
     };
