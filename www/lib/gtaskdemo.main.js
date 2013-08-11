@@ -24,25 +24,29 @@ $(document).ready(function() {
         //liquid.helper.oauth.authorize(authorizeWindowChange);
         event.preventDefault();
     });
+    $("#access-api").click(function(event) {
+        getCalendarList();
+        //liquid.helper.oauth.authorize(authorizeWindowChange);
+        event.preventDefault();
+    });
 
 
     if (oAuth.isAuthorized()) {
         /* Start Page TaskList */
-        alert("authorized1");
+        alert("Is Authorized...Your Google Token is "+ oAuth.authCode);
+        oAuth.getAccessToken(function(tokenObj) {
 
-        /*
-        $('#token').html("Your Google Token is "+ oAuth.authCode);
-        $('#salutation').html("Welcome Back, You have already authorized this app");
-        //getEmail();
-        $.mobile.changePage("#contacts", {
-            transition : "none",
-            reverse: false,
-            changeHash: false
+            alert('Is Auth - Access Token is >> ' + tokenObj.access_token);
+            $('#token').html("Your Google Token is "+ oAuth.authCode);
+            $('#salutation').html("Welcome Back, You have already authorized this app");
+            $.mobile.changePage("#contacts", {
+                transition : "none",
+                reverse: false,
+                changeHash: false
+            });
         });
-        //getEmail();
-        //startPageTaskList();
-          */
-    }
+    };
+
 });
 
 
@@ -62,6 +66,7 @@ function startApp() {
     	/* Start Page TaskList */
         alert("authorized");
         var oAuth = liquid.helper.oauth;
+
         //$('#token').innerHTML = "Your Google Token is "+ oAuth.authCode;
     	//startPageTaskList();
     }
@@ -126,14 +131,6 @@ function populateTaskList() {
 function goHome() {
     var oAuth = liquid.helper.oauth;
     alert("Your Google Token is "+ oAuth.authCode);
-   // $('#token').html("Your Google Token is "+ oAuth.authCode);
-    //$('#salutation').html("Thanks for authorizing this app");
-   // getEmail();
-    /*$.mobile.changePage("#contacts", {
-        transition : "none",
-        reverse: false,
-        changeHash: false
-    });     */
     getCalendarList();
 
 }
