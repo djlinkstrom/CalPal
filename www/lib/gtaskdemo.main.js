@@ -29,6 +29,14 @@ $(document).ready(function() {
         //liquid.helper.oauth.authorize(authorizeWindowChange);
         event.preventDefault();
     });
+    $("#login-return").click(function(event) {
+
+        $.mobile.changePage("#page-unauthorized", {
+            transition : "none",
+            reverse: false,
+            changeHash: false
+        });
+    });
 
 
     if (oAuth.isAuthorized()) {
@@ -37,7 +45,7 @@ $(document).ready(function() {
         oAuth.getAccessToken(function(tokenObj) {
 
             alert('Is Auth - Access Token is >> ' + tokenObj.access_token);
-            $('#token').html("Your Google Auth Code is  "+ oAuth.authCode);
+            $('#token').html("Your Google Auth Code is  "+ tokenObj.access_token);
             $('#salutation').html("Welcome Back, You have already authorized this app");
             $.mobile.changePage("#contacts", {
                 transition : "none",
