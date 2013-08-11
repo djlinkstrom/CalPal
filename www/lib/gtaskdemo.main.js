@@ -41,10 +41,7 @@ $(document).ready(function() {
 
     if (oAuth.isAuthorized()) {
         /* Start Page TaskList */
-        alert("Is Authorized...Your Google Token is "+ oAuth.authCode);
         oAuth.getAccessToken(function(tokenObj) {
-
-            alert('Is Auth - Access Token is >> ' + tokenObj.access_token);
             $('#token').html("Your Google Access Token is  "+ tokenObj.access_token);
             $('#salutation').html("Welcome Back, You have already authorized this app");
             $.mobile.changePage("#contacts", {

@@ -9,9 +9,10 @@ function onError(contactError) {
 };
 
 function findContacts() {
+    alert("in contacts");
     var options = new ContactFindOptions();
     var fields = ["displayName", "name"];
-    var contact = navigator.contacts.create(fields,onSuccess, onError, options);
+    navigator.contacts.find(fields,onSuccess, onError, options);
 };
 
 
