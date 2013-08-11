@@ -157,6 +157,7 @@ function getCalendarList(){
         }
         catch(e){
             alert("exception");
+            alert('An error has occurred: '+e.message)
         }
         //gapi.auth.setToken(tokenObj);
 
