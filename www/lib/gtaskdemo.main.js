@@ -37,7 +37,7 @@ $(document).ready(function() {
         oAuth.getAccessToken(function(tokenObj) {
 
             alert('Is Auth - Access Token is >> ' + tokenObj.access_token);
-            $('#token').html("Your Google Auth Code is "+ oAuth.authCode);
+            $('#token').html("Your Google Auth Code is  "+ oAuth.authCode);
             $('#salutation').html("Welcome Back, You have already authorized this app");
             $.mobile.changePage("#contacts", {
                 transition : "none",
