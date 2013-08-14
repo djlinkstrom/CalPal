@@ -21,7 +21,9 @@ $(document).ready(function() {
     function onSuccess(contacts) {
         alert('Found ' + contacts.length + ' contacts.');
         for (var i=0; i<contacts.length; i++) {
-            $('#contact-list').append('<li> <img src="img/default.png"> ' + contacts[i].displayName +'</li');
+            if(contacts[i].displayName!="null")  {
+                $('#contact-list').append('<li> <img src="img/default.png"> ' + contacts[i].displayName +'</li');
+            }
         }
 
         $.mobile.changePage("#contacts", {
