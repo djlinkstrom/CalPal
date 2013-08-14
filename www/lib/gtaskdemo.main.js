@@ -44,7 +44,7 @@ $(document).ready(function() {
         oAuth.getAccessToken(function(tokenObj) {
             $('#token').html("Your Google Access Token is  "+ tokenObj.access_token);
             $('#salutation').html("Welcome Back, You have already authorized this app");
-            $.mobile.changePage("#sych", {
+            $.mobile.changePage("#synch", {
                 transition : "none",
                 reverse: false,
                 changeHash: false
