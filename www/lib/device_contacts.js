@@ -29,6 +29,7 @@ $(document).ready(function() {
             reverse: false,
             changeHash: false
         });
+        $('#contact-list').listview('refresh');
     };
 
     function onError(contactError) {
