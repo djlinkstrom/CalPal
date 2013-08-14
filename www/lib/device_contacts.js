@@ -8,10 +8,15 @@ $(document).ready(function() {
 
     $("#synch-device").click(function(event) {
         var deviceName = device.name;
-        alert("Device Name" + deviceName +
-            "Device Platform" + device.platform +
-            "Device Model:" + device.model +
-            "Device Version" + device.version);
+        alert("Device Platform" + device.platform +
+            " Device Model:" + device.model +
+            " Device Version" + device.version);
+
+        $.mobile.changePage("#contacts", {
+            transition : "none",
+            reverse: false,
+            changeHash: false
+        });
         //liquid.helper.oauth.authorize(authorizeWindowChange);
 
     });
