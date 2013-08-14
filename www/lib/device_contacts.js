@@ -13,7 +13,7 @@ $(document).ready(function() {
             " Device Version" + device.version);
 
         $('#device-model').append(device.model);
-        $('#device-contact-count').append(contactCount());
+        contactCount();
         //liquid.helper.oauth.authorize(authorizeWindowChange);
 
     });
@@ -49,10 +49,10 @@ $(document).ready(function() {
         options.filter="";
         options.multiple=true;
         var fields = ["displayName", "name"];
-        navigator.contacts.find(fields,contactCount, onError, options);
+        navigator.contacts.find(fields,returnCount, onError, options);
     }
     function returnCount(contacts) {
-        return contacts.length;
+        $('#device-contact-count').append(contacts.length);
     }
 
 
