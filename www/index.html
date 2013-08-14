@@ -117,27 +117,49 @@
     </div>
 </div>
 
-<div data-role="page" id="contacts">
+<div data-role="page" id="synch">
     <div data-role="header">
-        <h1>CalPal Login</h1>
+        <h1>CalPal Device Synch</h1>
     </div>
     <div data-role="content">
          <div id="salutation"></div>
         <div id="token"> </div>
         <div id="email-address"></div>
-        <div id="contact-list"></div>
         <div id="access-api" data-authcode="">
             <a href="#" id="api-app" data-role="button" data-transition="none" >
                 Access Api</a>
         </div>
-        <div id="device-contacts" data-authcode="">
-            <a data-role="button" onclick="findContacts()" id="synch-device" >
+        <div id="synch-device" data-authcode="">
+            <a data-role="button" onclick="synchDevice()" >
                 Device Contacts</a>
         </div>
+
+
         <div id="login-return" data-authcode="">
             <a href="#" id="login-ret" data-role="button" data-transition="none" >
                 Return to Login</a>
         </div>
+
+    </div>
+</div>
+
+<div data-role="page" id="contacts">
+    <div data-role="header"  data-add-back-btn="true">
+        <h1>CalPal </h1>
+    </div>
+    <div data-role="content">
+
+
+        <div id="device-contacts" data-authcode="">
+            <a data-role="button" onclick="findContacts()" id="list-device-contacts" >
+                Get Contacts</a>
+        </div>
+        <div id="synch-return" data-authcode="">
+            <a href="#" id="return-to-synch" data-role="button" data-transition="none" data-rel="back" >
+                Return to Synch</a>
+        </div>
+
+        <div id="contact-list"></div>
 
     </div>
 </div>

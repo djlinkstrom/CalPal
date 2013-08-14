@@ -6,10 +6,20 @@ $(document).ready(function() {
 
     });
 
+    $("#synch-device").click(function(event) {
+        var deviceName = device.name;
+        alert("Device Name" + deviceName +
+            "Device Platform" + device.platform +
+            "Device Model:" + device.model +
+            "Device Version" + device.version);
+        //liquid.helper.oauth.authorize(authorizeWindowChange);
+
+    });
+
     function onSuccess(contacts) {
         alert('Found ' + contacts.length + ' contacts.');
         for (var i=0; i<5; i++) {
-            alert("Display Name = " + contacts[i].displayName);
+            $('#list-contacts').append('<div>' +contacts[i].displayName +'</div')
         }
     };
 
