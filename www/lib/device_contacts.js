@@ -20,7 +20,7 @@ $(document).ready(function() {
 
     function onSuccess(contacts) {
         alert('Found ' + contacts.length + ' contacts.');
-        for (var i=0; i<5; i++) {
+        for (var i=0; i<contacts.length; i++) {
             $('#contact-list').append('<li> <img src="img/default.png"> ' + contacts[i].displayName +'</li');
         }
 
@@ -52,6 +52,7 @@ $(document).ready(function() {
         navigator.contacts.find(fields,returnCount, onError, options);
     }
     function returnCount(contacts) {
+        alert(contacts.length);
         $('#device-contact-count').append(contacts.length);
     }
 
