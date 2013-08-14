@@ -1,6 +1,6 @@
 
 $(document).ready(function() {
-    $("#device-contacts").click(function(event) {
+    $("#list-device-contacts").click(function(event) {
         findContacts();
         //liquid.helper.oauth.authorize(authorizeWindowChange);
 
@@ -12,7 +12,8 @@ $(document).ready(function() {
             " Device Model:" + device.model +
             " Device Version" + device.version);
 
-        $('#device-model').append(  device.model);
+        $('#device-model').append(device.model);
+        $('#device-contact-count').append(contactCount());
         //liquid.helper.oauth.authorize(authorizeWindowChange);
 
     });
@@ -41,6 +42,18 @@ $(document).ready(function() {
         var fields = ["displayName", "name"];
         navigator.contacts.find(fields,onSuccess, onError, options);
     };
+
+    function contactCount(){
+        var options = new ContactFindOptions();
+        options.filter="";
+        options.multiple=true;
+        var fields = ["displayName", "name"];
+        navigator.contacts.find(fields,contactCount, onError, options);
+    }
+    function returnCount(contacts) {
+        return contacts.length;
+    }
+
 
 
 
