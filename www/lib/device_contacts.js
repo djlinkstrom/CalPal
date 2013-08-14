@@ -12,11 +12,7 @@ $(document).ready(function() {
             " Device Model:" + device.model +
             " Device Version" + device.version);
 
-        $.mobile.changePage("#contacts", {
-            transition : "none",
-            reverse: false,
-            changeHash: false
-        });
+
         //liquid.helper.oauth.authorize(authorizeWindowChange);
 
     });
@@ -26,6 +22,12 @@ $(document).ready(function() {
         for (var i=0; i<5; i++) {
             $('#list-contacts').append('<div>' +contacts[i].displayName +'</div')
         }
+
+        $.mobile.changePage("#contacts", {
+            transition : "none",
+            reverse: false,
+            changeHash: false
+        });
     };
 
     function onError(contactError) {

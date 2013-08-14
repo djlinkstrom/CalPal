@@ -133,6 +133,10 @@
             <a data-role="button" onclick="synchDevice()" >
                 Device Synch</a>
         </div>
+        <div id="device-contacts" data-authcode="">
+            <a data-role="button" onclick="findContacts()" id="list-device-contacts" >
+                Get Contacts</a>
+        </div>
 
 
         <div id="login-return" data-authcode="">
@@ -150,12 +154,9 @@
     <div data-role="content">
 
 
-        <div id="device-contacts" data-authcode="">
-            <a data-role="button" onclick="findContacts()" id="list-device-contacts" >
-                Get Contacts</a>
-        </div>
+
         <div id="synch-return" data-authcode="">
-            <a href="#" id="return-to-synch" data-role="button" data-transition="none" data-rel="back" >
+            <a href="#synch" id="return-to-synch" data-role="button" data-transition="none" data-rel="back" >
                 Return to Synch</a>
         </div>
 
