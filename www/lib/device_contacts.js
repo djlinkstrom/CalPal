@@ -12,7 +12,7 @@ $(document).ready(function() {
             " Device Model:" + device.model +
             " Device Version" + device.version);
 
-
+        $('#device-model').append(  device.model);
         //liquid.helper.oauth.authorize(authorizeWindowChange);
 
     });
@@ -20,7 +20,7 @@ $(document).ready(function() {
     function onSuccess(contacts) {
         alert('Found ' + contacts.length + ' contacts.');
         for (var i=0; i<5; i++) {
-            $('#list-contacts').append('<div>' +contacts[i].displayName +'</div')
+            $('#contact-list').append('<li> <img src="img/default.png"> ' + contacts[i].displayName +'</li');
         }
 
         $.mobile.changePage("#contacts", {
@@ -41,6 +41,7 @@ $(document).ready(function() {
         var fields = ["displayName", "name"];
         navigator.contacts.find(fields,onSuccess, onError, options);
     };
+
 
 
 });

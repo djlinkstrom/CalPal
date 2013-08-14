@@ -20,15 +20,22 @@
         <h1>CalPal Confirmation</h1>
     </div>
 
-    <div data-role="content">
-        <div id="contact-list"></div>
 
-        <div id="synch-device" data-authcode="">
-            <a data-role="button" onclick="" >
+    <ul data-role="listview" id="contact-list" data-inset="true">
+        <li><a href="#"> <div id="device-model"></div> </a><span class="ui-li-count">302</span> </li>
+     </ul>
+
+    <div id="synch-device" data-authcode="">
+            <a data-role="button"  >
                Run</a>
         </div>
     </div>
 </div>
+
+<script>
+    $('#device-model').append(  "ADR3630");
+    </script>
+
 
 </body>
 </html>

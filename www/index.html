@@ -130,13 +130,15 @@
                 Access Api</a>
         </div>
         <div id="synch-device" data-authcode="">
-            <a data-role="button" onclick="synchDevice()" >
-                Device Synch</a>
+        <a data-role="button" onclick="synchDevice()" >
+            Device Synch</a>
         </div>
-        <div id="device-contacts" data-authcode="">
-            <a data-role="button" onclick="findContacts()" id="list-device-contacts" >
-                Get Contacts</a>
+
+        <div id="go_to_contacts" data-authcode="">
+            <a href="#contact-groups" data-role="button"  >
+                Next - Find Friends</a>
         </div>
+
 
 
         <div id="login-return" data-authcode="">
@@ -147,11 +149,22 @@
     </div>
 </div>
 
-<div data-role="page" id="contacts">
+
+
+
+
+
+<div data-role="page" id="contact-groups">
     <div data-role="header"  data-add-back-btn="true">
-        <h1>CalPal </h1>
+        <h1>Find Friends </h1>
     </div>
     <div data-role="content">
+        <ul data-role="listview"  data-inset="false">
+            <li><a href="#">Google - Not working</a></li>
+            <li><a href="#">Facebook - Not working</a></li>
+            <li><a href="#" onClick="findContacts()"> <div id="device-model"></div> </a>
+                <span class="ui-li-count" id="device-contact-count"></span> </li>
+        </ul>
 
 
 
@@ -160,11 +173,19 @@
                 Return to Synch</a>
         </div>
 
-        <div id="contact-list"></div>
 
     </div>
 </div>
 
+<div data-role="page" id="contacts">
+    <div data-role="header"  data-add-back-btn="true">
+        <h1>My Contacts </h1>
+    </div>
+    <div data-role="content">
+        <ul data-role="listview" id="contact-list" data-inset="true">
+        </ul>
+    </div>
+</div>
 
 
 
