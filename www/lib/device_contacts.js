@@ -54,7 +54,6 @@ $(document).ready(function() {
         navigator.contacts.find(fields,returnCount, onError, options);
     }
     function returnCount(contacts) {
-        alert(contacts.length);
         $('#device-contact-count').append(contacts.length);
     }
 
