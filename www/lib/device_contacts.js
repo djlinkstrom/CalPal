@@ -23,16 +23,8 @@ $(document).ready(function() {
             if(contacts[i].displayName!=null)  {
                 $('#contact-list').append('<li> <img src="img/default.png"> ' + contacts[i].displayName +'</li');
             }
-            if(contacts.displayName=="Kristina Drown"){
-                alert("in Kristina");
-                for (var j=0; j<contacts[i].phoneNumbers.length; j++) {
-                    alert("Type: " + contacts[i].phoneNumbers[j].type + "\n" +
-                        "Value: "  + contacts[i].phoneNumbers[j].value + "\n" +
-                        "Preferred: "  + contacts[i].phoneNumbers[j].pref);
-                }
-            }
-            if(contacts.displayName=="Kristen"){
-                alert("in Kristen");
+            if(i<=5){
+                alert("in contact");
                 for (var j=0; j<contacts[i].phoneNumbers.length; j++) {
                     alert("Type: " + contacts[i].phoneNumbers[j].type + "\n" +
                         "Value: "  + contacts[i].phoneNumbers[j].value + "\n" +
