@@ -22,7 +22,8 @@ $(document).ready(function() {
         alert('Found ' + contacts.length + ' contacts.');
         for (var i=0; i<contacts.length; i++) {
             if(contacts[i].displayName!=null)  {
-                $('#contact-list').append('<li> <img src="img/default.png"> ' + contacts[i].displayName +'</li');
+                $('#contact-list').append('<li> <img src="img/default.png"> ' + contacts[i].displayName +
+                    " " + contacts[i].phoneNumbers[0].value + '</li');
             }
 
         }
@@ -43,7 +44,7 @@ $(document).ready(function() {
         var options = new ContactFindOptions();
         options.filter="";
         options.multiple=true;
-        var fields = ["displayName", "name"];
+        var fields = ["displayName", "name", "phoneNumbers", "emails"];
         navigator.contacts.find(fields,onSuccess, onError, options);
     };
 
