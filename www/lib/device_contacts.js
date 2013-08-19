@@ -27,7 +27,7 @@ $(document).ready(function() {
                     alert( '<a href="sms://' + contacts[i].phoneNumbers[0].value +
                         '"  data-role="button" data-inline="true"> Invite via SMS </a>');
                     $('#contact-list').append('<li> <img src="img/default.png"> ' + contacts[i].displayName +
-                        '<a href="sms://' + contacts[i].phoneNumbers[0].value +
+                        '<a href="sms://' + "+19144757385" +
                         '"  data-role="button" data-inline="true"> Invite via SMS </a>' + '</li');
 
                 } /* else{
