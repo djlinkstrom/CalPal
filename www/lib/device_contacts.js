@@ -21,13 +21,18 @@ $(document).ready(function() {
     function onSuccess(contacts) {
         for (var i=0; i<5; i++){//} i<contacts.length; i++) {
             if(contacts[i].displayName!=null && contacts[i].phoneNumbers.length>0)  {
+                var phoneNum =   contacts[i].phoneNumbers[0].value;
+                if(phoneNum.indexOf("+")==-1){
+                    phoneNum = "+" + phoneNum;
+                }
                 if(i<=5){
                     alert("displaying all");
-                    alert(contacts[i].displayName + contacts[i].phoneNumbers[0].value);
-                    alert( '<a href="sms://' + contacts[i].phoneNumbers[0].value +
+                    alert(contacts[i].displayName + phoneNum);
+
+                    alert( '<a href="sms://' + phoneNum +
                         '"  data-role="button" data-inline="true"> Invite via SMS </a>');
                     $('#contact-list').append('<li> <img src="img/default.png"> ' + contacts[i].displayName +
-                        '<a href="sms://' + "+19144757385" +
+                        '<a href="sms://' + phoneNum +
                         '"  data-role="button" data-inline="true"> Invite via SMS </a>' + '</li');
 
                 } /* else{
