@@ -24,13 +24,16 @@ $(document).ready(function() {
                 if(i<=5){
                     alert("displaying all");
                     alert(contacts[i].displayName + contacts[i].phoneNumbers[0].value);
+                    alert( '<a href="sms://"' + contacts[i].phoneNumbers[0].value +
+                        '"  data-role="button"> Invite via SMS');
                     $('#contact-list').append('<li> <img src="img/default.png"> ' + contacts[i].displayName +
-                        contacts[i].phoneNumbers[0].value + '</li');
+                        '<a href="sms://"' + contacts[i].phoneNumbers[0].value +
+                        '"  data-role="button" data-inline="true"> Invite via SMS' + '</li');
 
-                }  else{
+                } /* else{
                     $('#contact-list').append('<li> <img src="img/default.png"> ' + contacts[i].displayName +'</li');
 
-                }
+                }     */
             }
 
         }

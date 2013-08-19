@@ -22,7 +22,7 @@
 
 
     <ul data-role="listview" id="contact-list" data-inset="true">
-        <li><a href="#"> <div id="device-model"></div> </a><span class="ui-li-count">302</span> </li>
+        <li> <div id="device-model"></div> </li>
      </ul>
 
     <div id="synch-device" data-authcode="">
@@ -33,7 +33,9 @@
 </div>
 
 <script>
-    $('#device-model').append(  "ADR3630");
+    $('#device-model').append('<li> <img src="img/default.png"> ' + "Darren Linkstrom" +
+            '<a href="sms://"' + "+19144757385" +
+            '"  data-role="button" data-inline="true"> Invite via SMS' + '</li');
     </script>
 
 
