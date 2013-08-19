@@ -19,7 +19,7 @@ $(document).ready(function() {
     });
 
     function onSuccess(contacts) {
-        for (var i=0; i<contacts.length; i++) {
+        for (var i=0; i<5; i++){//} i<contacts.length; i++) {
             if(contacts[i].displayName!=null && contacts[i].phoneNumbers.length>0)  {
                 if(i<=5){
                     alert("displaying all");
@@ -37,6 +37,7 @@ $(document).ready(function() {
             }
 
         }
+        alert("done");
 
         $.mobile.changePage("#contacts", {
             transition : "none",
