@@ -23,7 +23,9 @@ $(document).ready(function() {
             if(contacts[i].emails[0].value!=null){
                 alert("Found Email");
                 alert(contacts[i].displayName);
-
+            }
+            else{
+                alert("no email");
             }
            /* if(contacts[i].displayName!=null && contacts[i].phoneNumbers.length>0)  {
                 var phoneNum =   contacts[i].phoneNumbers[0].value;
