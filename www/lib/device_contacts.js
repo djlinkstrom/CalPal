@@ -19,23 +19,24 @@ $(document).ready(function() {
     });
 
     function onSuccess(contacts) {
-        for (var i=0; i<5; i++){//} i<contacts.length; i++) {
+        for (var i=0; i<contacts.length; i++) {
             if(contacts[i].displayName!=null && contacts[i].phoneNumbers.length>0)  {
                 var phoneNum =   contacts[i].phoneNumbers[0].value;
+                var email = contacts[i].emails[0].value;
                 if(phoneNum.indexOf("+")==-1){
                     phoneNum = "+" + phoneNum;
                 }
-                if(i<=5){
-                    alert("displaying all");
-                    alert(contacts[i].displayName + phoneNum);
+                $('#contact-list').append('<li> <img src="img/default.png"> ' + contacts[i].displayName +
+                    '<a href="sms://' + phoneNum +
+                  '?body=CalPal"  data-role="button" data-inline="true" data-role="ui-li-aside">Text</a>' );
+                if(email!=null){
+                    $('#contact-list').append('<a href="mailto:>'  + email +
+                        '?subject=CalPal"  data-role="button" data-inline="true" data-role="ui-li-aside">Email</a>');
+                }
 
-                    alert( '<a href="sms://' + phoneNum +
-                        '"  data-role="button" data-inline="true"> Invite via SMS </a>');
-                    $('#contact-list').append('<li> <img src="img/default.png"> ' + contacts[i].displayName +
-                        '<a href="sms://' + phoneNum +
-                        '"  data-role="button" data-inline="true"> Invite via SMS </a>' + '</li');
+                $('#contact-list').append( '</li');
 
-                } /* else{
+                 /* else{
                     $('#contact-list').append('<li> <img src="img/default.png"> ' + contacts[i].displayName +'</li');
 
                 }     */
