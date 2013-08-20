@@ -19,7 +19,7 @@ $(document).ready(function() {
     });
 
     function onSuccess(contacts) {
-        for (var i=0; i<6; i++) {
+        for (var i=0; i<50; i++) {
             var email=null;
             if(contacts[i].emails!=null && contacts[i].emails.length>0){
                 email = contacts[i].emails[0].value;
@@ -29,13 +29,13 @@ $(document).ready(function() {
                 if(phoneNum.indexOf("+")==-1){
                     phoneNum = "+" + phoneNum;
                 }
-               alert(contacts[i].displayName + " " + phoneNum + " " + email);
+
                $('#contact-list').append('<li> <img src="img/default.png"> ' + contacts[i].displayName +
                     '<a href="sms://' + phoneNum +
-                  '"  data-role="button" data-inline="true" data-role="ui-li-aside">Text</a>' );
+                  '?body=CalPal"  data-role="button" data-inline="true" data-role="ui-li-aside">Text</a>' );
                 if(email!=null){
                     $('#contact-list').append('<a href="mailto:'  + email +
-                        '"  data-role="button" data-inline="true" data-role="ui-li-aside">Email</a>');
+                        '?subject=CalPal"  data-role="button" data-inline="true" data-role="ui-li-aside">Email</a>');
                 }
 
                 $('#contact-list').append( '</li');
