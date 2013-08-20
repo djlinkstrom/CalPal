@@ -34,7 +34,7 @@ $(document).ready(function() {
                     '<a href="sms://' + phoneNum +
                   '"  data-role="button" data-inline="true" data-role="ui-li-aside">Text</a>' );
                 if(email!=null){
-                    $('#contact-list').append('<a href="mailto:>'  + email +
+                    $('#contact-list').append('<a href="mailto:'  + email +
                         '"  data-role="button" data-inline="true" data-role="ui-li-aside">Email</a>');
                 }
 
