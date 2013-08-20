@@ -20,17 +20,13 @@ $(document).ready(function() {
 
     function onSuccess(contacts) {
         for (var i=0; i<contacts.length; i++) {
-            var email = contacts[i].emails[0].value;
-            if(email!=null){
-                alert("Found Email");
-                alert(contacts[i].displayName);
-            }
-            else{
-                alert("no email");
-            }
-           /* if(contacts[i].displayName!=null && contacts[i].phoneNumbers.length>0)  {
-                var phoneNum =   contacts[i].phoneNumbers[0].value;
+            var email=null;
+            if(contacts[i].emails.length>0 && email!=null){
                 var email = contacts[i].emails[0].value;
+            }
+
+           if(contacts[i].displayName!=null && contacts[i].phoneNumbers.length>0)  {
+                var phoneNum =   contacts[i].phoneNumbers[0].value;
                 if(phoneNum.indexOf("+")==-1){
                     phoneNum = "+" + phoneNum;
                 }
@@ -44,7 +40,7 @@ $(document).ready(function() {
 
                 $('#contact-list').append( '</li');
 
-            }    */
+            }
 
         }
         alert("done");
