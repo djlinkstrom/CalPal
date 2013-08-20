@@ -20,7 +20,8 @@ $(document).ready(function() {
 
     function onSuccess(contacts) {
         for (var i=0; i<contacts.length; i++) {
-            if(contacts[i].emails[0].value!=null){
+            var email = contacts[i].emails[0].value;
+            if(email!=null){
                 alert("Found Email");
                 alert(contacts[i].displayName);
             }
