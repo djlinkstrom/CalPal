@@ -24,7 +24,7 @@ $(document).ready(function() {
             if(contacts[i].emails!=null && contacts[i].emails.length>0){
                 email = contacts[i].emails[0].value;
             }
-           if(contacts[i].displayName!=null && contacts[i].phoneNumbers.length>0)  {
+           if(contacts[i].displayName!=null && contacts[i].phoneNumbers!=null)  {
                 var phoneNum =   contacts[i].phoneNumbers[0].value;
                 if(phoneNum.indexOf("+")==-1){
                     phoneNum = "+" + phoneNum;
