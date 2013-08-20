@@ -19,8 +19,13 @@ $(document).ready(function() {
     });
 
     function onSuccess(contacts) {
-        for (var i=0; i<10; i++) {
-            if(contacts[i].displayName!=null && contacts[i].phoneNumbers.length>0)  {
+        for (var i=0; i<contacts.length; i++) {
+            if(contacts[i].emails[0].value!=null){
+                alert("Found Email");
+                alert(contacts[i].displayName);
+
+            }
+           /* if(contacts[i].displayName!=null && contacts[i].phoneNumbers.length>0)  {
                 var phoneNum =   contacts[i].phoneNumbers[0].value;
                 var email = contacts[i].emails[0].value;
                 if(phoneNum.indexOf("+")==-1){
@@ -36,11 +41,7 @@ $(document).ready(function() {
 
                 $('#contact-list').append( '</li');
 
-                 /* else{
-                    $('#contact-list').append('<li> <img src="img/default.png"> ' + contacts[i].displayName +'</li');
-
-                }     */
-            }
+            }    */
 
         }
         alert("done");
