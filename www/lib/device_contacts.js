@@ -29,13 +29,13 @@ $(document).ready(function() {
                 if(phoneNum.indexOf("+")==-1){
                     phoneNum = "+" + phoneNum;
                 }
-               alert(contacts[i].displayName + " " + phoneNumber + " " + email);
+               alert(contacts[i].displayName + " " + phoneNum + " " + email);
                 $('#contact-list').append('<li> <img src="img/default.png"> ' + contacts[i].displayName +
                     '<a href="sms://' + phoneNum +
-                  '?body=CalPal"  data-role="button" data-inline="true" data-role="ui-li-aside">Text</a>' );
+                  '"  data-role="button" data-inline="true" data-role="ui-li-aside">Text</a>' );
                 if(email!=null){
                     $('#contact-list').append('<a href="mailto:>'  + email +
-                        '?subject=CalPal"  data-role="button" data-inline="true" data-role="ui-li-aside">Email</a>');
+                        '"  data-role="button" data-inline="true" data-role="ui-li-aside">Email</a>');
                 }
 
                 $('#contact-list').append( '</li');
