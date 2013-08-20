@@ -19,7 +19,7 @@ $(document).ready(function() {
     });
 
     function onSuccess(contacts) {
-        for (var i=0; i<50; i++) {
+        for (var i=0; i<contacts.length; i++) {
             var email=null;
             if(contacts[i].emails!=null && contacts[i].emails.length>0){
                 email = contacts[i].emails[0].value;
@@ -30,8 +30,8 @@ $(document).ready(function() {
                     phoneNum = "+" + phoneNum;
                 }
 
-               $('#contact-list').append('<li> <img src="img/default.png"> ' + contacts[i].displayName +
-                    '<a href="sms://' + phoneNum +
+               $('#contact-list').append('<li> <img src="img/default.png"><span>' + contacts[i].displayName +
+                    '</span><a href="sms://' + phoneNum +
                   '?body=CalPal"  data-role="button" data-inline="true" data-role="ui-li-aside">Text</a>' );
                 if(email!=null){
                     $('#contact-list').append('<a href="mailto:'  + email +
