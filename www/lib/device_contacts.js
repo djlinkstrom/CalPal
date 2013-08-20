@@ -30,7 +30,7 @@ $(document).ready(function() {
                     phoneNum = "+" + phoneNum;
                 }
                alert(contacts[i].displayName + " " + phoneNum + " " + email);
-               /* $('#contact-list').append('<li> <img src="img/default.png"> ' + contacts[i].displayName +
+               $('#contact-list').append('<li> <img src="img/default.png"> ' + contacts[i].displayName +
                     '<a href="sms://' + phoneNum +
                   '"  data-role="button" data-inline="true" data-role="ui-li-aside">Text</a>' );
                 if(email!=null){
@@ -38,7 +38,7 @@ $(document).ready(function() {
                         '"  data-role="button" data-inline="true" data-role="ui-li-aside">Email</a>');
                 }
 
-                $('#contact-list').append( '</li'); */
+                $('#contact-list').append( '</li');
 
             }
 
