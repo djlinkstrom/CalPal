@@ -21,7 +21,7 @@ $(document).ready(function() {
     function onSuccess(contacts) {
         for (var i=0; i<6; i++) {
             var email=null;
-            if(contacts[i].emails.length>0){
+            if(contacts[i].emails!=null && contacts[i].emails.length>0){
                 email = contacts[i].emails[0].value;
             }
            if(contacts[i].displayName!=null && contacts[i].phoneNumbers.length>0)  {
