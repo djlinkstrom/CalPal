@@ -19,17 +19,17 @@ $(document).ready(function() {
     });
 
     function onSuccess(contacts) {
-        for (var i=0; i<25; i++) {
+        for (var i=0; i<6; i++) {
             var email=null;
-            if(contacts[i].emails.length>0 && email!=null){
-                var email = contacts[i].emails[0].value;
+            if(contacts[i].emails.length>0){
+                email = contacts[i].emails[0].value;
             }
-
            if(contacts[i].displayName!=null && contacts[i].phoneNumbers.length>0)  {
                 var phoneNum =   contacts[i].phoneNumbers[0].value;
                 if(phoneNum.indexOf("+")==-1){
                     phoneNum = "+" + phoneNum;
                 }
+               alert(contacts[i].displayName + " " + phoneNumber + " " + email);
                 $('#contact-list').append('<li> <img src="img/default.png"> ' + contacts[i].displayName +
                     '<a href="sms://' + phoneNum +
                   '?body=CalPal"  data-role="button" data-inline="true" data-role="ui-li-aside">Text</a>' );
