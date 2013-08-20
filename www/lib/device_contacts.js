@@ -19,7 +19,7 @@ $(document).ready(function() {
     });
 
     function onSuccess(contacts) {
-        for (var i=0; i<contacts.length; i++) {
+        for (var i=0; i<10; i++) {
             if(contacts[i].displayName!=null && contacts[i].phoneNumbers.length>0)  {
                 var phoneNum =   contacts[i].phoneNumbers[0].value;
                 var email = contacts[i].emails[0].value;
