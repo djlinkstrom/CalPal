@@ -13,7 +13,7 @@ $(document).ready(function() {
 
     function isUser(field, value) {
       alert("in user");
-
+        alert(field + " " + value);
        if(value==null) {
            return false;
        }

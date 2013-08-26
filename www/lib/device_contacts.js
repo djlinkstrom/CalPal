@@ -30,14 +30,13 @@ $(document).ready(function() {
                 if(contacts[i].phoneNumbers.length>0){
                     var phoneNum =   contacts[i].phoneNumbers[0].value;
                 }
-                if(phoneNum.indexOf("+")==-1){
-                    phoneNum = "+" + phoneNum;
-                }
-               if(isUser("email", email) || isUser("phoneNumber", phoneNumber)){
+               if(isUser("email", email) || isUser("phoneNumber", phoneNum)){
                    $('#contact-list').append('<li> <img src="img/default.png"> ' + contacts[i].displayName +
                        '<img src="img/checkmark.png">');
                }
-
+               if(phoneNum.indexOf("+")==-1){
+                   phoneNum = "+" + phoneNum;
+               }
                $('#contact-list').append('<li> <img src="img/default.png"> ' + contacts[i].displayName +
                     ' <a href="sms://' + phoneNum +
                   '?body=CalPal"  data-role="button" data-inline="true" data-role="ui-li-aside">Text</a>' );
