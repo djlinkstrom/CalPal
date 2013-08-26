@@ -12,6 +12,8 @@ $(document).ready(function() {
     Parse.initialize(PARSE_APP, PARSE_JS);
 
     function isUser(field, value) {
+      alert("in user");
+
        if(value==null) {
            return false;
        }
