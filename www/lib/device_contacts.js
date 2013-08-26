@@ -1,5 +1,7 @@
-
+var PARSE_APP = "8nkGkTHJFzaNp731ZsjpMlqIGhDuQnQRibNsbhWI";
+var PARSE_JS = "9S6VHeESePTLxN3vfL7ZXOPU6CjsxlGa9rJn01iv";
 $(document).ready(function() {
+    Parse.initialize(PARSE_APP, PARSE_JS);
     $("#list-device-contacts").click(function(event) {
         findContacts();
         //liquid.helper.oauth.authorize(authorizeWindowChange);
@@ -31,6 +33,10 @@ $(document).ready(function() {
                 if(phoneNum.indexOf("+")==-1){
                     phoneNum = "+" + phoneNum;
                 }
+               if(isUser("email", email) || isUser("phoneNumber", phoneNumber)){
+                   $('#contact-list').append('<li> <img src="img/default.png"> ' + contacts[i].displayName +
+                       '<img src="img/checkmark.png">');
+               }
 
                $('#contact-list').append('<li> <img src="img/default.png"> ' + contacts[i].displayName +
                     ' <a href="sms://' + phoneNum +
@@ -77,6 +83,11 @@ $(document).ready(function() {
     function returnCount(contacts) {
         $('#device-contact-count').append(contacts.length);
     }
+
+
+
+
+
 
 
 
