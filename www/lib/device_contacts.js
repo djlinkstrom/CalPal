@@ -30,7 +30,6 @@ $(document).ready(function() {
                 if(contacts[i].phoneNumbers.length>0){
                     var phoneNum =   contacts[i].phoneNumbers[0].value;
                 }
-               alert(contacts[i].displayName + " " + email + " " + phoneNum);
                if(isUser("email", email) || isUser("phoneNumber", phoneNum)){
                    $('#contact-list').append('<li> <img src="img/default.png"> ' + contacts[i].displayName +
                        '<img src="img/checkmark.png">');
@@ -87,13 +86,12 @@ $(document).ready(function() {
 
 
     function isUser(field, value) {
-        alert("in user1");
         alert(field + " " + value);
         if(value==null) {
             return false;
         }
         var TestObject = Parse.Object.extend("UserObject");
-        var query = new Parse.Query(TestObject);
+        var query = new Parse.Query(Parse.User);
         query.equalTo(field,value);
         query.find({
             success:function(results) {
