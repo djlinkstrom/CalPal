@@ -97,7 +97,7 @@ $(document).ready(function() {
         }
 
         var query = new Parse.Query(Parse.User);
-        query.equalTo(field,value);
+        query.equalTo("phoneNumber",value);
         query.find({
             success:function(results) {
                 return true;
