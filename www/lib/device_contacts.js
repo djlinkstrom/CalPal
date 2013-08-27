@@ -30,21 +30,23 @@ $(document).ready(function() {
                 if(contacts[i].phoneNumbers.length>0){
                     var phoneNum =   contacts[i].phoneNumbers[0].value;
                 }
+               alert(contacts[i].displayName + " " + email + " " + phoneNum);
                if(isUser("email", email) || isUser("phoneNumber", phoneNum)){
                    $('#contact-list').append('<li> <img src="img/default.png"> ' + contacts[i].displayName +
                        '<img src="img/checkmark.png">');
                }
-               if(phoneNum.indexOf("+")==-1){
-                   phoneNum = "+" + phoneNum;
+               else{
+                   if(phoneNum.indexOf("+")==-1){
+                       phoneNum = "+" + phoneNum;
+                   }
+                   $('#contact-list').append('<li> <img src="img/default.png"> ' + contacts[i].displayName +
+                       ' <a href="sms://' + phoneNum +
+                       '?body=CalPal"  data-role="button" data-inline="true" data-role="ui-li-aside">Text</a>' );
+                   if(email!=null){
+                       $('#contact-list').append('<a href="mailto:'  + email +
+                           '?subject=CalPal"  data-role="button" data-inline="true" data-role="ui-li-aside">Email</a>');
+                   }
                }
-               $('#contact-list').append('<li> <img src="img/default.png"> ' + contacts[i].displayName +
-                    ' <a href="sms://' + phoneNum +
-                  '?body=CalPal"  data-role="button" data-inline="true" data-role="ui-li-aside">Text</a>' );
-                if(email!=null){
-                    $('#contact-list').append('<a href="mailto:'  + email +
-                        '?subject=CalPal"  data-role="button" data-inline="true" data-role="ui-li-aside">Email</a>');
-                }
-
                 $('#contact-list').append( '</li');
 
             }
@@ -84,7 +86,25 @@ $(document).ready(function() {
     }
 
 
-
+    function isUser(field, value) {
+        alert("in user1");
+        alert(field + " " + value);
+        if(value==null) {
+            return false;
+        }
+        var TestObject = Parse.Object.extend("UserObject");
+        var query = new Parse.Query(TestObject);
+        query.equalTo(field,value);
+        query.find({
+            success:function(results) {
+                return true;
+            },
+            error:function(results,error) {
+                alert("Error when getting users!");
+            }
+        });
+        return false;
+    }
 
 
 
