@@ -31,6 +31,7 @@ $(document).ready(function() {
                     var phoneNum =   contacts[i].phoneNumbers[0].value;
                 }
                if(isUser("email", email) || isUser("phoneNumber", phoneNum)){
+                   alert("hit");
                    $('#contact-list').append('<li> <img src="img/default.png"> ' + contacts[i].displayName +
                        '<img src="img/checkmark.png">');
                }
@@ -90,7 +91,11 @@ $(document).ready(function() {
         if(value==null) {
             return false;
         }
-        var TestObject = Parse.Object.extend("UserObject");
+        if(field=="phoneNumber"){
+            value = value.replace('+','');
+            alert(value);
+        }
+
         var query = new Parse.Query(Parse.User);
         query.equalTo(field,value);
         query.find({
