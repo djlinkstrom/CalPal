@@ -21,7 +21,7 @@ $(document).ready(function() {
     });
 
     function onSuccess(contacts) {
-        for (var i=0; i<5; i++) {
+        for (var i=0; i<1; i++) {
             var email=null;
             if(contacts[i].emails!=null && contacts[i].emails.length>0){
                 email = contacts[i].emails[0].value;
@@ -96,19 +96,17 @@ $(document).ready(function() {
             alert(value);
         }
         alert(field + " " + value);
-        var query = new Parse.Query(Parse.User);
+        var UserObject = Parse.Object.extend("UserObject");
+        var query = new Parse.Query(UserObject);
         query.equalTo("phoneNumber", value);
         query.find({
             success:function(results) {
+                alert("hit");
                 return true;
             },
             error:function(results,error) {
                 if (error.code === Parse.Error.OBJECT_NOT_FOUND) {
                     alert("Perfect, could not find this email!");
-
-                    Parse.User.signUp(username, password, { ACL: new Parse.ACL() }, {
-                        // ... signUp method here ...
-                    });
                 } else if (error.code === Parse.Error.CONNECTION_FAILED) {
                     alert("Uh oh, we couldn't even connect to the Parse servers!");
                 }
