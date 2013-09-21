@@ -158,6 +158,7 @@ $(document).ready(function() {
                     }
                 },
                 error:function(results,error) {
+                    alert("error");
                     callback(false, false, value1, value2);
                 }
             });
