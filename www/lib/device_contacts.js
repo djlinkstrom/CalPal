@@ -27,32 +27,13 @@ $(document).ready(function() {
                 email = contacts[i].emails[0].value;
             }
            if(contacts[i]!=null && contacts[i].displayName!=null && contacts[i].phoneNumbers!=null)  {
-                if(contacts[i].phoneNumbers.length>0){
+               $('#contact-list').append('<li> <img src="img/default.png"> ' + contacts[i].displayName);
+
+               if(contacts[i].phoneNumbers.length>0){
                     var phoneNum =   contacts[i].phoneNumbers[0].value;
                 }
-               var emailMatch =  isUser("email", email);
-               var phoneMatch =  isUser("phoneNumber", phoneNum);
-               alert(emailMatch + " " + phoneMatch);
-               if( emailMatch || phoneMatch ){
-                   alert("hit it");
-                   $('#contact-list').append('<li> <img src="img/default.png"> ' + contacts[i].displayName +
-                       '<img src="img/checkmark.png">');
-               }
-               else{
-                   alert("no hit it");
-                   if(phoneNum.indexOf("+")==-1){
-                       phoneNum = "+" + phoneNum;
-                   }
-                   $('#contact-list').append('<li> <img src="img/default.png"> ' + contacts[i].displayName +
-                       ' <a href="sms://' + phoneNum +
-                       '?body=CalPal"  data-role="button" data-inline="true" data-role="ui-li-aside">Text</a>' );
-                   if(email!=null){
-                       $('#contact-list').append('<a href="mailto:'  + email +
-                           '?subject=CalPal"  data-role="button" data-inline="true" data-role="ui-li-aside">Email</a>');
-                   }
-               }
+               var isMatch =  isUser("email", email, "phoneNumber", phoneNum, appendText);
                 $('#contact-list').append( '</li>');
-
             }
 
         }
@@ -65,6 +46,26 @@ $(document).ready(function() {
         });
         $('#contact-list').listview('refresh');
     };
+
+    function appendText(emailMatch, phoneMatch, email, phoneNum){
+        if( emailMatch || phoneMatch ){
+            alert("hit it");
+            $('#contact-list').append('<img src="img/checkmark.png">');
+        }
+        else{
+            alert("no hit it");
+            if(phoneNum.indexOf("+")==-1){
+                phoneNum = "+" + phoneNum;
+            }
+            $('#contact-list').append(
+                ' <a href="sms://' + phoneNum +
+                '?body=CalPal"  data-role="button" data-inline="true" data-role="ui-li-aside">Text</a>' );
+            if(email!=null){
+                $('#contact-list').append('<a href="mailto:'  + email +
+                    '?subject=CalPal"  data-role="button" data-inline="true" data-role="ui-li-aside">Email</a>');
+            }
+        }
+    }
 
     function onError(contactError) {
         alert('onError!');
@@ -90,31 +91,44 @@ $(document).ready(function() {
     }
 
 
-    function isUser(field, value) {
-        if(value==null) {
-            return false;
+    function isUser(field1, value1, field2, value2, callback) {
+       var emailMatch=true;
+       var phoneMatch=true;
+        if(value1==null ) {
+            emailMatch=false;
         }
-        if(field=="phoneNumber"){
-            value = value.replace('+','');
+        if(value2==null ) {
+            phoneMatch=false;
         }
-        alert(field + " " + value);
+        if(field2=="phoneNumber"){
+            value2 = value2.replace('+','');
+        };
         var UserObject = Parse.Object.extend("UserObject");
         var query = new Parse.Query(UserObject);
-        query.equalTo("phoneNumber", value);
-        query.find({
-            success:function(results) {
-                alert("hit");
-                return true;
-            },
-            error:function(results,error) {
-                if (error.code === Parse.Error.OBJECT_NOT_FOUND) {
-                    alert("Perfect, could not find this email!");
-                } else if (error.code === Parse.Error.CONNECTION_FAILED) {
-                    alert("Uh oh, we couldn't even connect to the Parse servers!");
+        if(emailMatch!=false){
+            query.equalTo("email", value1);
+            query.find({
+                success:function(results) {
+                    alert("hit");
+
+                },
+                error:function(results,error) {
+                    emailMatch = false;
                 }
-                return false;
-            }
-        });
+            });
+        }
+        if(phoneMatch!=false){
+            query.equalTo("phoneNumber", value2);
+            query.find({
+                success:function(results) {
+                    alert("hit");
+                },
+                error:function(results,error) {
+                    phoneMatch = false;
+                }
+            });
+        }
+        callback(emailMatch, phoneMatch,value1, value2 );
 
     }
 
