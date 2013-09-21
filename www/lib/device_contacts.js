@@ -87,7 +87,7 @@ $(document).ready(function() {
 
 
     function isUser(field, value) {
-        alert(field + " " + value);
+      alert(field + " " + value);
         if(value==null) {
             return false;
         }
@@ -95,7 +95,7 @@ $(document).ready(function() {
             value = value.replace('+','');
             alert(value);
         }
-
+        alert(field + " " + value);
         var query = new Parse.Query(Parse.User);
         query.equalTo("phoneNumber",value);
         query.find({
@@ -106,6 +106,19 @@ $(document).ready(function() {
                 alert("Error when getting users!");
             }
         });
+
+        alert("no hit");
+
+        query.equalTo("phoneNumber","9144757385");
+        query.find({
+            success:function(results) {
+                return true;
+            },
+            error:function(results,error) {
+                alert("Error when getting users!");
+            }
+        });
+        alert("no hit 2");
         return false;
     }
 
