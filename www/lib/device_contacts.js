@@ -111,7 +111,7 @@ $(document).ready(function() {
             query.equalTo("email", value1);
             query.find({
                 success:function(results) {
-                    alert("hit");
+                    alert("hit " + value1);
                     callback(true, false, value1, value2);
                 },
                 error:function(results,error) {
@@ -119,7 +119,7 @@ $(document).ready(function() {
                         query.equalTo("phoneNumber", value2);
                         query.find({
                             success:function(results) {
-                                alert("hit");
+                                alert("hit " + value2);
                                 callback(false, true, value1, value2);
                             },
                             error:function(results,error) {
@@ -134,7 +134,7 @@ $(document).ready(function() {
             query.equalTo("phoneNumber", value2);
             query.find({
                 success:function(results) {
-                    alert("hit");
+                    alert("hit " + value2);
                     callback(true, false, value1, value2);
                 },
                 error:function(results,error) {
