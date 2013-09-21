@@ -131,6 +131,7 @@ $(document).ready(function() {
                                     }
                                 },
                                 error:function(results,error) {
+                                    callback(false, false, value1, value2);
                                 }
                             });
                         }
@@ -138,11 +139,13 @@ $(document).ready(function() {
 
                 },
                 error:function(results,error) {
+                    callback(false, false, value1, value2);
                 }
             });
         }
         else{
             query.equalTo("phoneNumber", value2);
+            alert(value2);
             query.find({
                 success:function(results) {
                     if(results!=null && results.length>0){
@@ -155,6 +158,7 @@ $(document).ready(function() {
                     }
                 },
                 error:function(results,error) {
+                    callback(false, false, value1, value2);
                 }
             });
         }
