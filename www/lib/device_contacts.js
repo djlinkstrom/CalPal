@@ -93,8 +93,8 @@ $(document).ready(function() {
 
 
     function isUser(value1, value2, callback) {
-       var emailMatch=true;
-       var phoneMatch=true;
+        var emailMatch=true;
+        var phoneMatch=true;
         if(value1==null ) {
             emailMatch=false;
         }
@@ -110,6 +110,7 @@ $(document).ready(function() {
         var UserObject = Parse.Object.extend("UserObject");
         var query = new Parse.Query(UserObject);
         if(emailMatch!=false){
+            alert("email" + value1);
             query.equalTo("email", value1);
             query.find({
                 success:function(results) {
@@ -120,6 +121,7 @@ $(document).ready(function() {
                     }
                     else{
                         if(phoneMatch!=false){
+                            alert("phoneNumber2" + value2);
                             query.equalTo("phoneNumber", value2);
                             query.find({
                                 success:function(results) {
@@ -129,7 +131,7 @@ $(document).ready(function() {
                                         callback(false, true, value1, value2);
                                     }
                                     else{
-                                            callback(false, false, value1, value2);
+                                        callback(false, false, value1, value2);
                                     }
                                 },
                                 error:function(results,error) {
@@ -146,6 +148,7 @@ $(document).ready(function() {
             });
         }
         else{
+            alert("phoneNumber" + value2);
             query.equalTo("phoneNumber", value2);
             query.find({
                 success:function(results) {
