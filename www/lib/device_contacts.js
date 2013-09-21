@@ -111,22 +111,31 @@ $(document).ready(function() {
             query.equalTo("email", value1);
             query.find({
                 success:function(results) {
-                    alert("hit " + value1);
-                    callback(true, false, value1, value2);
+                    if(results.length>0){
+                        alert("hit " + value1);
+                        callback(true, false, value1, value2);
+                    }
+                    else{
+                        if(phoneMatch!=false){
+                            query.equalTo("phoneNumber", value2);
+                            query.find({
+                                success:function(results) {
+                                    if(results.length>0){
+                                        alert("hit " + value2);
+                                        callback(false, true, value1, value2);
+                                    }
+                                    else{
+                                            callback(false, false, value1, value2);
+                                    }
+                                },
+                                error:function(results,error) {
+                                }
+                            });
+                        }
+                    }
+
                 },
                 error:function(results,error) {
-                    if(phoneMatch!=false){
-                        query.equalTo("phoneNumber", value2);
-                        query.find({
-                            success:function(results) {
-                                alert("hit " + value2);
-                                callback(false, true, value1, value2);
-                            },
-                            error:function(results,error) {
-                                callback(false, false, value1, value2);
-                            }
-                        });
-                    }
                 }
             });
         }
@@ -134,11 +143,15 @@ $(document).ready(function() {
             query.equalTo("phoneNumber", value2);
             query.find({
                 success:function(results) {
-                    alert("hit " + value2);
-                    callback(true, false, value1, value2);
+                    if(results.length>0){
+                        alert("hit " + value2);
+                        callback(false, true, value1, value2);
+                    }
+                    else{
+                        callback(false, false, value1, value2);
+                    }
                 },
                 error:function(results,error) {
-                    callback(false, false, value1, value2);
                 }
             });
         }
