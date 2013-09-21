@@ -21,7 +21,7 @@ $(document).ready(function() {
     });
 
     function onSuccess(contacts) {
-        for (var i=0; i<5; i++) {
+        for (var i=0; i<2; i++) {
             var email=null;
             if(contacts[i].emails!=null && contacts[i].emails.length>0){
                 email = contacts[i].emails[0].value;
