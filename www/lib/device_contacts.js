@@ -31,11 +31,12 @@ $(document).ready(function() {
                     var phoneNum =   contacts[i].phoneNumbers[0].value;
                 }
                if(isUser("email", email) || isUser("phoneNumber", phoneNum)){
-                   alert("hit");
+                   alert("hit it");
                    $('#contact-list').append('<li> <img src="img/default.png"> ' + contacts[i].displayName +
                        '<img src="img/checkmark.png">');
                }
                else{
+                   alert("no hit it");
                    if(phoneNum.indexOf("+")==-1){
                        phoneNum = "+" + phoneNum;
                    }
@@ -87,13 +88,11 @@ $(document).ready(function() {
 
 
     function isUser(field, value) {
-      alert(field + " " + value);
         if(value==null) {
             return false;
         }
         if(field=="phoneNumber"){
             value = value.replace('+','');
-            alert(value);
         }
         alert(field + " " + value);
         var UserObject = Parse.Object.extend("UserObject");
@@ -110,12 +109,10 @@ $(document).ready(function() {
                 } else if (error.code === Parse.Error.CONNECTION_FAILED) {
                     alert("Uh oh, we couldn't even connect to the Parse servers!");
                 }
+                return false;
             }
         });
 
-        alert("no hit");
-
-        return false;
     }
 
 
