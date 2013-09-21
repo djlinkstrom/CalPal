@@ -21,7 +21,7 @@ $(document).ready(function() {
     });
 
     function onSuccess(contacts) {
-        for (var i=0; i<1; i++) {
+        for (var i=0; i<5; i++) {
             var email=null;
             if(contacts[i].emails!=null && contacts[i].emails.length>0){
                 email = contacts[i].emails[0].value;
@@ -32,8 +32,8 @@ $(document).ready(function() {
                if(contacts[i].phoneNumbers.length>0){
                     var phoneNum =   contacts[i].phoneNumbers[0].value;
                 }
-               var isMatch =  isUser(email, phoneNum, appendText);
-                $('#contact-list').append( '</li>');
+               isUser(email, phoneNum, appendText);
+
             }
 
         }
@@ -65,6 +65,7 @@ $(document).ready(function() {
                     '?subject=CalPal"  data-role="button" data-inline="true" data-role="ui-li-aside">Email</a>');
             }
         }
+        $('#contact-list').append( '</li>');
     }
 
     function onError(contactError) {
