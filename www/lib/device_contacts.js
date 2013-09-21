@@ -32,7 +32,7 @@ $(document).ready(function() {
                if(contacts[i].phoneNumbers.length>0){
                     var phoneNum =   contacts[i].phoneNumbers[0].value;
                 }
-               var isMatch =  isUser("email", email, "phoneNumber", phoneNum, appendText);
+               var isMatch =  isUser(email, phoneNum, appendText);
                 $('#contact-list').append( '</li>');
             }
 
@@ -91,7 +91,7 @@ $(document).ready(function() {
     }
 
 
-    function isUser(field1, value1, field2, value2, callback) {
+    function isUser(value1, value2, callback) {
        var emailMatch=true;
        var phoneMatch=true;
         if(value1==null ) {
@@ -100,9 +100,10 @@ $(document).ready(function() {
         if(value2==null ) {
             phoneMatch=false;
         }
-        if(field2=="phoneNumber"){
-            value2 = value2.replace('+','');
-        };
+        if(!emailMatch && !phoneMatch){
+            callback(false, false, value1, value2);
+        }
+
         var UserObject = Parse.Object.extend("UserObject");
         var query = new Parse.Query(UserObject);
         if(emailMatch!=false){
@@ -110,26 +111,36 @@ $(document).ready(function() {
             query.find({
                 success:function(results) {
                     alert("hit");
-
+                    callback(true, false, value1, value2);
                 },
                 error:function(results,error) {
-                    emailMatch = false;
+                    if(phoneMatch!=false){
+                        query.equalTo("phoneNumber", value2);
+                        query.find({
+                            success:function(results) {
+                                alert("hit");
+                                callback(false, true, value1, value2);
+                            },
+                            error:function(results,error) {
+                                callback(false, false, value1, value2);
+                            }
+                        });
+                    }
                 }
             });
         }
-        if(phoneMatch!=false){
+        else{
             query.equalTo("phoneNumber", value2);
             query.find({
                 success:function(results) {
                     alert("hit");
+                    callback(true, false, value1, value2);
                 },
                 error:function(results,error) {
-                    phoneMatch = false;
+                    callback(false, false, value1, value2);
                 }
             });
         }
-        callback(emailMatch, phoneMatch,value1, value2 );
-
     }
 
 
