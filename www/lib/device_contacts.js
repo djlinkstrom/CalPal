@@ -113,6 +113,7 @@ $(document).ready(function() {
             query.equalTo("email", value1);
             query.find({
                 success:function(results) {
+                    alert(value1 + " " + results.length);
                     if( results!=null && results.length>0){
                         alert("hit " + value1);
                         callback(true, false, value1, value2);
@@ -122,6 +123,7 @@ $(document).ready(function() {
                             query.equalTo("phoneNumber", value2);
                             query.find({
                                 success:function(results) {
+                                    alert(value2 + " " + results.length);
                                     if(results!=null && results.length>0){
                                         alert("hit " + value2);
                                         callback(false, true, value1, value2);
@@ -145,11 +147,10 @@ $(document).ready(function() {
         }
         else{
             query.equalTo("phoneNumber", value2);
-            alert(value2);
             query.find({
                 success:function(results) {
+                    alert(value2 + " " + results.length);
                     if(results!=null && results.length>0){
-                        alert(value2 + " " + results.length);
                         alert("hit " + value2);
                         callback(false, true, value1, value2);
                     }
