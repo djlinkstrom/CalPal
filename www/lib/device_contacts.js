@@ -97,7 +97,7 @@ $(document).ready(function() {
         }
         alert(field + " " + value);
         var query = new Parse.Query(Parse.User);
-        query.equalTo("phoneNumber", "19144757385");
+        query.equalTo(phoneNumber, "19144757385");
         query.find({
             success:function(results) {
                 return true;
