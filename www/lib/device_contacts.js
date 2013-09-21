@@ -53,7 +53,7 @@ $(document).ready(function() {
             $('#contact-list').append('<img src="img/checkmark.png">');
         }
         else{
-            alert("no hit it");
+            alert("no hit");
             if(phoneNum.indexOf("+")==-1){
                 phoneNum = "+" + phoneNum;
             }
@@ -113,7 +113,7 @@ $(document).ready(function() {
             query.equalTo("email", value1);
             query.find({
                 success:function(results) {
-                    if(results.length>0){
+                    if( results!=null && results.length>0){
                         alert("hit " + value1);
                         callback(true, false, value1, value2);
                     }
@@ -122,7 +122,7 @@ $(document).ready(function() {
                             query.equalTo("phoneNumber", value2);
                             query.find({
                                 success:function(results) {
-                                    if(results.length>0){
+                                    if(results!=null && results.length>0){
                                         alert("hit " + value2);
                                         callback(false, true, value1, value2);
                                     }
@@ -146,7 +146,7 @@ $(document).ready(function() {
             query.find({
                 success:function(results) {
                     alert(value2 + " " + results.length);
-                    if(results.length>0){
+                    if(results!=null && results.length>0){
                         alert("hit " + value2);
                         callback(false, true, value1, value2);
                     }
