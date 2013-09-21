@@ -104,6 +104,7 @@ $(document).ready(function() {
         if(!emailMatch && !phoneMatch){
             callback(false, false, value1, value2);
         }
+        alert(value2);
 
         var UserObject = Parse.Object.extend("UserObject");
         var query = new Parse.Query(UserObject);
