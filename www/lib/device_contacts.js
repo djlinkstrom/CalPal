@@ -97,13 +97,21 @@ $(document).ready(function() {
         }
         alert(field + " " + value);
         var query = new Parse.Query(Parse.User);
-        query.equalTo(phoneNumber, "19144757385");
+        query.equalTo("phoneNumber", value);
         query.find({
             success:function(results) {
                 return true;
             },
             error:function(results,error) {
-                alert("Error when getting users!");
+                if (error.code === Parse.Error.OBJECT_NOT_FOUND) {
+                    alert("Perfect, could not find this email!");
+
+                    Parse.User.signUp(username, password, { ACL: new Parse.ACL() }, {
+                        // ... signUp method here ...
+                    });
+                } else if (error.code === Parse.Error.CONNECTION_FAILED) {
+                    alert("Uh oh, we couldn't even connect to the Parse servers!");
+                }
             }
         });
 
