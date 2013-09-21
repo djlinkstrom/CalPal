@@ -145,8 +145,8 @@ $(document).ready(function() {
             query.equalTo("phoneNumber", value2);
             query.find({
                 success:function(results) {
-                    alert(value2 + " " + results.length);
                     if(results!=null && results.length>0){
+                        alert(value2 + " " + results.length);
                         alert("hit " + value2);
                         callback(false, true, value1, value2);
                     }
