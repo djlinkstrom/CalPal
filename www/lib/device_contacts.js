@@ -104,8 +104,9 @@ $(document).ready(function() {
         if(!emailMatch && !phoneMatch){
             callback(false, false, value1, value2);
         }
-        alert(value2);
-
+        if(value2.indexOf("+")!=-1){
+            value2 = value2.replace('+', '');
+        }
         var UserObject = Parse.Object.extend("UserObject");
         var query = new Parse.Query(UserObject);
         if(emailMatch!=false){
@@ -144,6 +145,7 @@ $(document).ready(function() {
             query.equalTo("phoneNumber", value2);
             query.find({
                 success:function(results) {
+                    alert(value2 + " " + results.length);
                     if(results.length>0){
                         alert("hit " + value2);
                         callback(false, true, value1, value2);
