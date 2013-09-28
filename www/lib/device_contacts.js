@@ -49,7 +49,7 @@ $(document).ready(function() {
           */
     function onSuccess(contacts){
         var myContacts = new Object();
-        for(var i=0; i<contacts.length; i++){
+        for(var i=0; i<15; i++){
             var img = contacts[i].photos  != null ? contacts[i].photos[0].value : "default";
 
             var email=null;
@@ -85,10 +85,9 @@ $(document).ready(function() {
 
             // Sort each names
             records = records.sort( sortNames );
-
             for( var r_key in records  )
             {
-
+                   alert(records[r_key].name);
             }
 
         }
