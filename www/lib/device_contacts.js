@@ -53,7 +53,7 @@ $(document).ready(function() {
             if(contacts[i].photos[0]!= null && contacts[i].photos[0].value  != null){
                 var img = contacts[i].photos[0].value;
             }   else{
-                var image = "default";
+                var img = "default";
             }
 
             var email=null;
