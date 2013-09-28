@@ -50,7 +50,12 @@ $(document).ready(function() {
     function onSuccess(contacts){
         var myContacts = new Object();
         for(var i=0; i<15; i++){
-            var img = contacts[i].photos  != null ? contacts[i].photos[0].value : "default";
+            if(contacts[i].photos  != null){
+                alert("not null"+  contacts[i].displayName);
+                var img = contacts[i].photos;
+            }   else{
+                var image = "default";
+            }
 
             var email=null;
             if(contacts[i].emails!=null && contacts[i].emails.length>0){
@@ -81,7 +86,6 @@ $(document).ready(function() {
         for( i = 0 ; i < arrayKeys.length ; i++ )
         {
             var records =  myContacts[ arrayKeys[i] ];
-            alert(arrayKeys[i] + " " + records.length);
 
             // Sort each names
             records = records.sort( sortNames );
@@ -107,6 +111,14 @@ $(document).ready(function() {
             }
 
         }
+        alert("done");
+
+        $.mobile.changePage("#contacts", {
+            transition : "none",
+            reverse: false,
+            changeHash: false
+        });
+        $('#contact-list').listview('refresh');
 
     }
     function sortNames(a, b )
