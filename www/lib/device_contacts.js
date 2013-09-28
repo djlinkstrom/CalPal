@@ -50,10 +50,12 @@ $(document).ready(function() {
     function onSuccess(contacts){
         var myContacts = new Object();
         for(var i=0; i<15; i++){
-            if(contacts[i].photos[0]!= null && contacts[i].photos[0].value  != null){
+            if(contacts[i].photos!= null && contacts[i].photos[0].value!= null){
                 var img = contacts[i].photos[0].value;
+                alert("not null"+ img);
             }   else{
                 var img = "default";
+                alert("null"+ img);
             }
 
             var email=null;
