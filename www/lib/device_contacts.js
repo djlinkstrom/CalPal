@@ -93,8 +93,7 @@ $(document).ready(function() {
             {
                 var phoneNum = records[r_key].phoneNum;
                 var email = records[r_key].email;
-
-                $('#contact-list').append('<li> <img src="img/default.png"> ' + records[r_key].name);
+                $('#contact-list').append('<li> <img src="' + records[r_key].img+'"> ' + records[r_key].name);
                 if(phoneNum.indexOf("+")==-1){
                     phoneNum = "+" + phoneNum;
                 }
@@ -106,6 +105,10 @@ $(document).ready(function() {
                         '?subject=CalPal"  data-role="button" data-inline="true" data-role="ui-li-aside">Email</a>');
                 }
                 $('#contact-list').append( '</li>');
+
+
+
+
             }
 
         }
@@ -147,6 +150,25 @@ $(document).ready(function() {
     function returnCount(contacts) {
         $('#device-contact-count').append(contacts.length);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     function appendText(emailMatch, phoneMatch, email, phoneNum){
