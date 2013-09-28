@@ -51,8 +51,8 @@ $(document).ready(function() {
         var myContacts = new Object();
         for(var i=0; i<15; i++){
             if(contacts[i].photos  != null){
-                alert("not null"+  contacts[i].displayName);
-                var img = contacts[i].photos;
+                alert("not null"+  contacts[i].photos[0].value);
+                var img = contacts[i].photos[0].value;
             }   else{
                 var image = "default";
             }
@@ -93,9 +93,6 @@ $(document).ready(function() {
             {
                 var phoneNum = records[r_key].phoneNum;
                 var email = records[r_key].email;
-                if(records[r_key].img=='default'){
-                    alert("np pic");
-                }
 
                 $('#contact-list').append('<li> <img src="img/default.png"> ' + records[r_key].name);
                 if(phoneNum.indexOf("+")==-1){
@@ -108,6 +105,7 @@ $(document).ready(function() {
                     $('#contact-list').append('<a href="mailto:'  + email +
                         '?subject=CalPal"  data-role="button" data-inline="true" data-role="ui-li-aside">Email</a>');
                 }
+                $('#contact-list').append( '</li>');
             }
 
         }
