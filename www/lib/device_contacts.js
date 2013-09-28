@@ -20,7 +20,7 @@ $(document).ready(function() {
 
     });
 
-    function onSuccess(contacts) {
+   /* function onSuccess(contacts) {
         for (var i=0; i<2; i++) {
             var email=null;
             if(contacts[i].emails!=null && contacts[i].emails.length>0){
@@ -46,27 +46,59 @@ $(document).ready(function() {
         });
         $('#contact-list').listview('refresh');
     };
+          */
+    function onSuccess(contacts){
+        var myContacts = new Object();
+        for(var i=0; i<contacts.length; i++){
+            var img = contacts[i].photos  != null ? contacts[i].photos[0].value : "default";
 
-    function appendText(emailMatch, phoneMatch, email, phoneNum){
-        if( emailMatch || phoneMatch ){
-            alert("hit it");
-            $('#contact-list').append('<img src="img/checkmark.png">');
-        }
-        else{
-            alert("no hit");
-            if(phoneNum.indexOf("+")==-1){
-                phoneNum = "+" + phoneNum;
+            var email=null;
+            if(contacts[i].emails!=null && contacts[i].emails.length>0){
+                email = contacts[i].emails[0].value;
             }
-            $('#contact-list').append(
-                ' <a href="sms://' + phoneNum +
-                '?body=CalPal"  data-role="button" data-inline="true" data-role="ui-li-aside">Text</a>' );
-            if(email!=null){
-                $('#contact-list').append('<a href="mailto:'  + email +
-                    '?subject=CalPal"  data-role="button" data-inline="true" data-role="ui-li-aside">Email</a>');
+            if(contacts[i]!=null && contacts[i].displayName!=null && contacts[i].phoneNumbers!=null)  {
+                var name = contacts[i].displayName;
+                if(contacts[i].phoneNumbers.length>0){
+                    var phoneNum =   contacts[i].phoneNumbers[0].value;
+                }
+                var index = name.substring(0,1).toUpperCase();
+                if (typeof myContacts[index] == 'undefined')
+                {
+                    myContacts[index] = new Array();
+                }
+
+                myContacts[index].push({"name":name, "phoneNum": phoneNum, "email": email, "img": img} );
             }
         }
-        $('#contact-list').append( '</li>');
+        var arrayKeys = new Array();
+        for (var key in myContacts )
+        {
+            arrayKeys.push( key );
+        }
+
+        arrayKeys = arrayKeys.sort();
+
+        for( i = 0 ; i < arrayKeys.length ; i++ )
+        {
+            var records =  myContacts[ arrayKeys[i] ];
+            alert(arrayKeys[i] + " " + records.length);
+
+            // Sort each names
+            records = records.sort( sortNames );
+
+            for( var r_key in records  )
+            {
+
+            }
+
+        }
+
     }
+    function sortNames(a, b )
+    {
+        return a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1;
+    }
+
 
     function onError(contactError) {
         alert('onError!');
@@ -76,7 +108,7 @@ $(document).ready(function() {
         var options = new ContactFindOptions();
         options.filter="";
         options.multiple=true;
-        var fields = ["displayName", "name", "phoneNumbers", "emails"];
+        var fields = ["displayName", "name", "phoneNumbers", "emails", "photos"];
         navigator.contacts.find(fields,onSuccess, onError, options);
     };
 
@@ -92,6 +124,27 @@ $(document).ready(function() {
     }
 
 
+    function appendText(emailMatch, phoneMatch, email, phoneNum){
+        if( emailMatch || phoneMatch ){
+            alert("hit it");
+            $('#contact-list').append('<img src="img/checkmark.png">');
+        }
+        else{
+            alert("no hit");
+            if(phoneNum.indexOf("+")==-1){
+                phoneNum = "+" + phoneNum;
+            }
+            $('#contact-list').append(
+                ' <a href="sms://' + phoneNum +
+                    '?body=CalPal"  data-role="button" data-inline="true" data-role="ui-li-aside">Text</a>' );
+            if(email!=null){
+                $('#contact-list').append('<a href="mailto:'  + email +
+                    '?subject=CalPal"  data-role="button" data-inline="true" data-role="ui-li-aside">Email</a>');
+            }
+        }
+        $('#contact-list').append( '</li>');
+    }
+     /*
     function isUser(value1, value2, callback) {
         var emailMatch=true;
         var phoneMatch=true;
@@ -169,7 +222,7 @@ $(document).ready(function() {
         }
     }
 
-
+      */
 
 
 
