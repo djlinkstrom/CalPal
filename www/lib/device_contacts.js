@@ -51,7 +51,7 @@ $(document).ready(function() {
         var myContacts = new Object();
         for(var i=0; i<15; i++){
             if(contacts[i].photos  != null){
-                alert("not null"+  contacts[i].photos[0].value);
+                alert("not null "+  contacts[i].photos[0].value);
                 var img = contacts[i].photos[0].value;
             }   else{
                 var image = "default";
@@ -93,7 +93,7 @@ $(document).ready(function() {
             {
                 var phoneNum = records[r_key].phoneNum;
                 var email = records[r_key].email;
-                $('#contact-list').append('<li> <img src="' + records[r_key].img+'"> ' + records[r_key].name);
+                $('#contact-list').append('<li> <img src="' + records[r_key].img+'"  height="42" width="42"> ' + records[r_key].name);
                 if(phoneNum.indexOf("+")==-1){
                     phoneNum = "+" + phoneNum;
                 }
