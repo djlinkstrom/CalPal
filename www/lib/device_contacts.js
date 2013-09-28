@@ -87,7 +87,23 @@ $(document).ready(function() {
             records = records.sort( sortNames );
             for( var r_key in records  )
             {
-                   alert(records[r_key].name);
+                var phoneNum = records[r_key].phoneNum;
+                var email = records[r_key].email;
+                if(records[r_key].img=='default'){
+                    alert("np pic");
+                }
+
+                $('#contact-list').append('<li> <img src="img/default.png"> ' + records[r_key].name);
+                if(phoneNum.indexOf("+")==-1){
+                    phoneNum = "+" + phoneNum;
+                }
+                $('#contact-list').append(
+                    ' <a href="sms://' + phoneNum +
+                        '?body=CalPal"  data-role="button" data-inline="true" data-role="ui-li-aside">Text</a>' );
+                if(email!=null){
+                    $('#contact-list').append('<a href="mailto:'  + email +
+                        '?subject=CalPal"  data-role="button" data-inline="true" data-role="ui-li-aside">Email</a>');
+                }
             }
 
         }
