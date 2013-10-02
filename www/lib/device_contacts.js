@@ -138,12 +138,12 @@ $(document).ready(function() {
 
         alert("done");
 
-        $.mobile.changePage("#contacts", {
+        /*$.mobile.changePage("#contacts", {
             transition : "none",
             reverse: false,
             changeHash: false
         });
-        $('#contact-list').listview('refresh');
+        $('#contact-list').listview('refresh');   */
 
     }
     function sortNames(a, b )
