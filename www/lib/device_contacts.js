@@ -48,6 +48,7 @@ $(document).ready(function() {
     };
           */
     function onSuccess(contacts){
+        Parse.initialize(PARSE_APP, PARSE_JS);
         var myContacts = new Object();
         for(var i=0; i<15; i++){
             if(contacts[i].photos!= null && contacts[i].photos[0].value!= null){
@@ -125,6 +126,11 @@ $(document).ready(function() {
                     alert("in " + contact.get("firstName"));
                     $('#contact-list').append('<li>'+contact.get("phoneNumber")+' '+contact.get("Email")+'</li>');
                 }
+            },
+            error:function(results,error) {
+                alert("Error when getting users!");
+                alert("results: "+results.length);
+                alert(error.get("code")+" " + error.get("message"));
             }
         });
 
