@@ -52,10 +52,10 @@ $(document).ready(function() {
         for(var i=0; i<15; i++){
             if(contacts[i].photos!= null && contacts[i].photos[0].value!= null){
                 var img = contacts[i].photos[0].value;
-                alert("not null"+ img);
+                //alert("not null"+ img);
             }   else{
                 var img = "default";
-                alert("null"+ img);
+                //alert("null"+ img);
             }
 
             var email=null;
@@ -111,9 +111,11 @@ $(document).ready(function() {
                 $('#contact-list').append( '</li>'); */
 
                 $('#contact-list').append('<li>'+phoneNum+' '+email+'</li>');
+                alert('done ' + records[r_key].name );
             }
 
         }
+        alert("break");
         $('#contact-list').append('<li>Break</li>');
         var UserObject = Parse.Object.extend("UserObject");
         var query = new Parse.Query(UserObject);
