@@ -111,7 +111,6 @@ $(document).ready(function() {
                 $('#contact-list').append( '</li>'); */
 
                 $('#contact-list').append('<li>'+phoneNum+' '+email+'</li>');
-                alert('done ' + records[r_key].name );
             }
 
         }
