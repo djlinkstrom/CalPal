@@ -116,14 +116,16 @@ $(document).ready(function() {
 
         }
         alert("break");
-        $('#contact-list').append('<li>Break</li>');
+        $('#contact-list').append("<li>Break</li>");
         var UserObject = Parse.Object.extend("UserObject");
         var query = new Parse.Query(UserObject);
         query.find({
             success:function(results) {
-                for(var i=0, len=results.length; i<len; i++) {
+                alert("success");
+                for(var i=0; i<results.length; i++) {
+
                     var contact = results[i];
-                    alert("in " + contact.get("firstName"));
+
                     $('#contact-list').append('<li>'+contact.get("phoneNumber")+' '+contact.get("Email")+'</li>');
                 }
             },
