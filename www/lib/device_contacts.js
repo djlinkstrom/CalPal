@@ -94,7 +94,7 @@ $(document).ready(function() {
             {
                 var phoneNum = records[r_key].phoneNum;
                 var email = records[r_key].email;
-                if(records[r_key]=="default"){
+                /*if(records[r_key]=="default"){
                     alert("default");
                 }
                 $('#contact-list').append('<li> <img src="' + records[r_key].img+'"  height="42" width="42"> ' + records[r_key].name);
@@ -108,14 +108,24 @@ $(document).ready(function() {
                     $('#contact-list').append('<a href="mailto:'  + email +
                         '?subject=CalPal"  data-role="button" data-inline="true" data-role="ui-li-aside">Email</a>');
                 }
-                $('#contact-list').append( '</li>');
+                $('#contact-list').append( '</li>'); */
 
-
-
-
+                $('#contact-list').append('<li>'+phoneNum+' '+email+'</li>');
             }
 
         }
+        $('#contact-list').append('<li>Break</li>');
+        var UserObject = Parse.Object.extend("UserObject");
+        var query = new Parse.Query(UserObject);
+        query.find({
+            success:function(results) {
+                for(var i=0, len=results.length; i<len; i++) {
+                    var contact = results[i];
+                    $('#contact-list').append('<li>'+contact.get("phoneNumber")+' '+contact.get("Email")+'</li>');
+                }
+            }
+        });
+
         alert("done");
 
         $.mobile.changePage("#contacts", {
