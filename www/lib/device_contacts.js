@@ -123,6 +123,7 @@ $(document).ready(function() {
             success:function(results) {
                 for(var i=0, len=results.length; i<len; i++) {
                     var contact = results[i];
+                    alert("in " + contact.get("firstName"));
                     $('#contact-list').append('<li>'+contact.get("phoneNumber")+' '+contact.get("Email")+'</li>');
                 }
             }
