@@ -118,7 +118,9 @@ $(document).ready(function() {
         alert("break");
         $('#contact-list').append("<li>Break</li>");
         var UserObject = Parse.Object.extend("UserObject");
+        alert("1");
         var query = new Parse.Query(UserObject);
+        alert("2");
         query.find({
             success:function(results) {
                 alert("success");
