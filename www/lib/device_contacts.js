@@ -2,6 +2,8 @@ var PARSE_APP = "8nkGkTHJFzaNp731ZsjpMlqIGhDuQnQRibNsbhWI";
 var PARSE_JS = "9S6VHeESePTLxN3vfL7ZXOPU6CjsxlGa9rJn01iv";
 $(document).ready(function() {
     Parse.initialize(PARSE_APP, PARSE_JS);
+    var UserObject = Parse.Object.extend("TestObject");
+
     $("#list-device-contacts").click(function(event) {
         findContacts();
         //liquid.helper.oauth.authorize(authorizeWindowChange);
@@ -117,7 +119,7 @@ $(document).ready(function() {
         }
         alert("break");
         $('#contact-list').append("<li>Break</li>");
-        var UserObject = Parse.Object.extend("UserObject");
+
         alert("1");
         var query = new Parse.Query(UserObject);
         alert("2");
@@ -127,8 +129,8 @@ $(document).ready(function() {
                 for(var i=0; i<results.length; i++) {
 
                     var contact = results[i];
-
-                    $('#contact-list').append('<li>'+contact.get("phoneNumber")+' '+contact.get("Email")+'</li>');
+                    alert(contact.get("foo"));
+                    //$('#contact-list').append('<li>'+contact.get("phoneNumber")+' '+contact.get("Email")+'</li>');
                 }
             },
             error:function(results,error) {
