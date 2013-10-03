@@ -3,7 +3,7 @@ var PARSE_JS = "9S6VHeESePTLxN3vfL7ZXOPU6CjsxlGa9rJn01iv";
 $(document).ready(function() {
     Parse.initialize(PARSE_APP, PARSE_JS);
     var parseContacts = new Array();
-    getParseContacts();
+
 
 
     function getParseContacts(){
@@ -34,7 +34,7 @@ $(document).ready(function() {
         //findContacts();
         //liquid.helper.oauth.authorize(authorizeWindowChange);
 
-
+        getParseContacts();
         alert("length " + parseContacts.length);
         alert("done");
     });
