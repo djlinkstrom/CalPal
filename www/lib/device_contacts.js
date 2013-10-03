@@ -2,12 +2,34 @@ var PARSE_APP = "8nkGkTHJFzaNp731ZsjpMlqIGhDuQnQRibNsbhWI";
 var PARSE_JS = "9S6VHeESePTLxN3vfL7ZXOPU6CjsxlGa9rJn01iv";
 $(document).ready(function() {
     Parse.initialize(PARSE_APP, PARSE_JS);
-    var UserObject = Parse.Object.extend("TestObject");
+
 
     $("#list-device-contacts").click(function(event) {
-        findContacts();
+        //findContacts();
         //liquid.helper.oauth.authorize(authorizeWindowChange);
+        Parse.initialize(PARSE_APP, PARSE_JS);
+        var UserObject = Parse.Object.extend("UserObject");
+        alert("1");
+        var query = new Parse.Query(UserObject);
+        alert("2");
+        query.find({
+            success:function(results) {
+                alert("success");
+                for(var i=0; i<results.length; i++) {
 
+                    var contact = results[i];
+                    alert(contact.get("foo"));
+                    //$('#contact-list').append('<li>'+contact.get("phoneNumber")+' '+contact.get("Email")+'</li>');
+                }
+            },
+            error:function(results,error) {
+                alert("Error when getting users!");
+                alert("results: "+results.length);
+                alert(error.get("code")+" " + error.get("message"));
+            }
+        });
+
+        alert("done");
     });
 
     $("#synch-device").click(function(event) {
@@ -50,9 +72,9 @@ $(document).ready(function() {
     };
           */
     function onSuccess(contacts){
-        Parse.initialize(PARSE_APP, PARSE_JS);
+
         var myContacts = new Object();
-        for(var i=0; i<15; i++){
+        /*for(var i=0; i<15; i++){
             if(contacts[i].photos!= null && contacts[i].photos[0].value!= null){
                 var img = contacts[i].photos[0].value;
                 //alert("not null"+ img);
@@ -97,7 +119,7 @@ $(document).ready(function() {
             {
                 var phoneNum = records[r_key].phoneNum;
                 var email = records[r_key].email;
-                /*if(records[r_key]=="default"){
+                if(records[r_key]=="default"){
                     alert("default");
                 }
                 $('#contact-list').append('<li> <img src="' + records[r_key].img+'"  height="42" width="42"> ' + records[r_key].name);
@@ -111,36 +133,16 @@ $(document).ready(function() {
                     $('#contact-list').append('<a href="mailto:'  + email +
                         '?subject=CalPal"  data-role="button" data-inline="true" data-role="ui-li-aside">Email</a>');
                 }
-                $('#contact-list').append( '</li>'); */
+                $('#contact-list').append( '</li>');
 
                 $('#contact-list').append('<li>'+phoneNum+' '+email+'</li>');
             }
 
         }
         alert("break");
-        $('#contact-list').append("<li>Break</li>");
+        $('#contact-list').append("<li>Break</li>");  */
 
-        alert("1");
-        var query = new Parse.Query(UserObject);
-        alert("2");
-        query.find({
-            success:function(results) {
-                alert("success");
-                for(var i=0; i<results.length; i++) {
 
-                    var contact = results[i];
-                    alert(contact.get("foo"));
-                    //$('#contact-list').append('<li>'+contact.get("phoneNumber")+' '+contact.get("Email")+'</li>');
-                }
-            },
-            error:function(results,error) {
-                alert("Error when getting users!");
-                alert("results: "+results.length);
-                alert(error.get("code")+" " + error.get("message"));
-            }
-        });
-
-        alert("done");
 
         /*$.mobile.changePage("#contacts", {
             transition : "none",
@@ -150,6 +152,7 @@ $(document).ready(function() {
         $('#contact-list').listview('refresh');   */
 
     }
+
     function sortNames(a, b )
     {
         return a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1;
