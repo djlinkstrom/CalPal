@@ -2,11 +2,11 @@ var PARSE_APP = "8nkGkTHJFzaNp731ZsjpMlqIGhDuQnQRibNsbhWI";
 var PARSE_JS = "9S6VHeESePTLxN3vfL7ZXOPU6CjsxlGa9rJn01iv";
 $(document).ready(function() {
     Parse.initialize(PARSE_APP, PARSE_JS);
+    var parseContacts = new Array();
+    getParseContacts();
 
 
-    $("#list-device-contacts").click(function(event) {
-        //findContacts();
-        //liquid.helper.oauth.authorize(authorizeWindowChange);
+    function getParseContacts(){
         Parse.initialize(PARSE_APP, PARSE_JS);
         var UserObject = Parse.Object.extend("UserObject");
         alert("1");
@@ -18,7 +18,8 @@ $(document).ready(function() {
                 for(var i=0; i<results.length; i++) {
 
                     var contact = results[i];
-                    alert(contact.get("foo"));
+                    parseContacts.push(contact);
+
                     //$('#contact-list').append('<li>'+contact.get("phoneNumber")+' '+contact.get("Email")+'</li>');
                 }
             },
@@ -28,7 +29,13 @@ $(document).ready(function() {
                 alert(error.get("code")+" " + error.get("message"));
             }
         });
+    }
+    $("#list-device-contacts").click(function(event) {
+        //findContacts();
+        //liquid.helper.oauth.authorize(authorizeWindowChange);
 
+
+        alert("length " + parseContacts.length);
         alert("done");
     });
 
