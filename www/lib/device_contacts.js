@@ -12,7 +12,20 @@ $(document).ready(function() {
         alert("1");
         var query = new Parse.Query(UserObject);
         alert("2");
-        query.find({
+        query.find().then(function(results){
+            for(var i=0; i<results.length; i++) {
+                var contact = results[i];
+                parseContacts.push(contact);
+                alert(i);
+                //$('#contact-list').append('<li>'+contact.get("phoneNumber")+' '+contact.get("Email")+'</li>');
+            }
+        }, function(error) {
+                alert("Error when getting users!");
+            });
+
+
+
+            /*
             success:function(results) {
                 alert("success");
                 for(var i=0; i<results.length; i++) {
@@ -20,29 +33,21 @@ $(document).ready(function() {
                     var contact = results[i];
                     parseContacts.push(contact);
 
-                    //$('#contact-list').append('<li>'+contact.get("phoneNumber")+' '+contact.get("Email")+'</li>');
+
                 }
             },
             error:function(results,error) {
-                alert("Error when getting users!");
+
                 alert("results: "+results.length);
                 alert(error.get("code")+" " + error.get("message"));
             }
-        });
+        });  */
 
     }
     $("#list-device-contacts").click(function(event) {
         //findContacts();
         //liquid.helper.oauth.authorize(authorizeWindowChange);
-
-        try{
-            getParseContacts();
-            alert("got through");
-        } catch(e){
-            alert('An error has occurred: '+e.message);
-        }  finally{
-            alert("I have no idea");
-        }
+        getParseContacts();
         alert("length " + parseContacts.length);
         alert("done");
     });
