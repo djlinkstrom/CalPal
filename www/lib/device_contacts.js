@@ -29,12 +29,20 @@ $(document).ready(function() {
                 alert(error.get("code")+" " + error.get("message"));
             }
         });
+
     }
     $("#list-device-contacts").click(function(event) {
         //findContacts();
         //liquid.helper.oauth.authorize(authorizeWindowChange);
 
-        getParseContacts();
+        try{
+            getParseContacts();
+            alert("got through");
+        } catch(e){
+            alert('An error has occurred: '+e.message);
+        }  finally{
+            alert("I have no idea");
+        }
         alert("length " + parseContacts.length);
         alert("done");
     });
