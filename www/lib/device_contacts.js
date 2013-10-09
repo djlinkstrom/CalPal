@@ -9,16 +9,16 @@ $(document).ready(function() {
     function getParseContacts(){
         Parse.initialize(PARSE_APP, PARSE_JS);
         var UserObject = Parse.Object.extend("UserObject");
-        alert("1");
         var query = new Parse.Query(UserObject);
-        alert("2");
         query.find().then(function(results){
+            alert("results " + results.length);
             for(var i=0; i<results.length; i++) {
                 var contact = results[i];
                 parseContacts.push(contact);
                 alert(i);
                 //$('#contact-list').append('<li>'+contact.get("phoneNumber")+' '+contact.get("Email")+'</li>');
             }
+            alert("length " + parseContacts.length);
         }, function(error) {
                 alert("Error when getting users!");
             });
@@ -48,8 +48,7 @@ $(document).ready(function() {
         //findContacts();
         //liquid.helper.oauth.authorize(authorizeWindowChange);
         getParseContacts();
-        alert("length " + parseContacts.length);
-        alert("done");
+
     });
 
     $("#synch-device").click(function(event) {
