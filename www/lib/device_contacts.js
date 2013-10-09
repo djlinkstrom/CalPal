@@ -11,7 +11,12 @@ $(document).ready(function() {
         var UserObject = Parse.Object.extend("UserObject");
         var query = new Parse.Query(UserObject);
         query.find().then(function(results){
-            alert("results " + results.length);
+            if(results!=null){
+                alert("results " + results.length);
+            }
+            else{
+                alert("null");
+            }
             for(var i=0; i<results.length; i++) {
                 var contact = results[i];
                 parseContacts.push(contact);
