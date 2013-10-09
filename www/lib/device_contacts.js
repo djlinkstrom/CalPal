@@ -13,7 +13,7 @@ $(document).ready(function() {
         alert("in parse contacts");
         query.find().then(function(results){
             if(results!=null){
-                alert("results " + results.length);
+                alert("results ");
             }
             else{
                 alert("null");
