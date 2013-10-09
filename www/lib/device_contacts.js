@@ -10,6 +10,7 @@ $(document).ready(function() {
         Parse.initialize(PARSE_APP, PARSE_JS);
         var UserObject = Parse.Object.extend("UserObject");
         var query = new Parse.Query(UserObject);
+        alert("in parse contacts");
         query.find().then(function(results){
             if(results!=null){
                 alert("results " + results.length);
