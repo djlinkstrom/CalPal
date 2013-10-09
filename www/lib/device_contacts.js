@@ -8,20 +8,16 @@ $(document).ready(function() {
 
     function getParseContacts(){
         Parse.initialize(PARSE_APP, PARSE_JS);
-        var UserObject = Parse.Object.extend("UserObject");
-        var query = new Parse.Query(UserObject);
+        //var UserObject = Parse.Object.extend("UserObject");
+        var query = new Parse.Query("UserObject");
         alert("in parse contacts");
         query.find().then(function(results){
-            if(results!=null){
-                alert("results ");
-            }
-            else{
-                alert("null");
-            }
+            alert("in here");
+            alert("length 1 " + parseContacts.length);
             for(var i=0; i<results.length; i++) {
+                alert(i);
                 var contact = results[i];
                 parseContacts.push(contact);
-                alert(i);
                 //$('#contact-list').append('<li>'+contact.get("phoneNumber")+' '+contact.get("Email")+'</li>');
             }
             alert("length " + parseContacts.length);
