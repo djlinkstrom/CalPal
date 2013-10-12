@@ -51,9 +51,10 @@ $(document).ready(function() {
         //findContacts();
         //liquid.helper.oauth.authorize(authorizeWindowChange);
         //getParseContacts();
+        alert("here");
         Parse.initialize(PARSE_APP, PARSE_JS);
-        //var UserObject = Parse.Object.extend("UserObject");
-        var query = new Parse.Query("UserObject");
+        var UserObject = Parse.Object.extend("UserObject");
+        var query = new Parse.Query(UserObject);
         query.find({
             success: function(results) {
                 alert("in here");
@@ -65,7 +66,6 @@ $(document).ready(function() {
                     //$('#contact-list').append('<li>'+contact.get("phoneNumber")+' '+contact.get("Email")+'</li>');
                 }
             },
-
             error: function(error) {
                 alert("Error when getting users!");
             }
