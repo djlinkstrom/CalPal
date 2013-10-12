@@ -9,26 +9,52 @@ $(document).ready(function() {
     function getParseContacts(){
         Parse.initialize(PARSE_APP, PARSE_JS);
         //var UserObject = Parse.Object.extend("UserObject");
-        var query = new Parse.Query("UserObject");
-        alert("in parse contacts");
+
+
+        /*var query = new Parse.Query("UserObject");
+        alert("query created");
+        var promise = new Parse.Promise();
+        alert("promise created");
+
+
         query.find().then(function(results){
-            alert("in here");
-            alert("length 1 " + parseContacts.length);
-            for(var i=0; i<results.length; i++) {
-                alert(i);
-                var contact = results[i];
-                parseContacts.push(contact);
-                //$('#contact-list').append('<li>'+contact.get("phoneNumber")+' '+contact.get("Email")+'</li>');
+            if (results.length == 0)
+            {
+                promise.resolve("no results");
             }
-            alert("i "+i);
-            alert("length " + parseContacts.length);
-        }, function(error) {
-                alert("Error when getting users!");
+            else
+            {
+                getParseContacts().then(function(result) {
+                    promise.resolve(result);
+                }, function(error) {
+                    promise.reject(error);
+                });
+            }
+        },  function(error) {
+            promise.reject(error);
+        });
+
+        return promise;          */
+
+
+
+          /*
+        var self = this;
+        var UserObject = Parse.Object.extend("UserObject");
+        var query = new Parse.Query(UserObject).descending("firstName");
+        query.first().then(function(firstUser) {
+            self.firstUser = firstUser;
+            var player = highScore.get("player");
+            return player.fetch();
+        }).then(function(player) {
+                self.topPlayer = player;
             });
+                        */
 
+        var UserObject = Parse.Object.extend("UserObject");
+        var query = new Parse.Query(UserObject);
+        query.find({
 
-
-            /*
             success:function(results) {
                 alert("success");
                 for(var i=0; i<results.length; i++) {
@@ -44,33 +70,19 @@ $(document).ready(function() {
                 alert("results: "+results.length);
                 alert(error.get("code")+" " + error.get("message"));
             }
-        });  */
+        });
+        alert("done");
 
     }
     $("#list-device-contacts").click(function(event) {
         //findContacts();
         //liquid.helper.oauth.authorize(authorizeWindowChange);
-        //getParseContacts();
-        alert("here");
-        Parse.initialize(PARSE_APP, PARSE_JS);
-        var UserObject = Parse.Object.extend("UserObject");
-        var query = new Parse.Query(UserObject);
-        query.find({
-            success: function(results) {
-                alert("in here");
-                alert("length 1 " + parseContacts.length);
-                for(var i=0; i<results.length; i++) {
-                    alert(i);
-                    var contact = results[i];
-                    parseContacts.push(contact);
-                    //$('#contact-list').append('<li>'+contact.get("phoneNumber")+' '+contact.get("Email")+'</li>');
-                }
-            },
-            error: function(error) {
-                alert("Error when getting users!");
-            }
-        });
-        alert("done probably before query is complete");
+        getParseContacts();
+
+
+
+
+
 
     });
 
