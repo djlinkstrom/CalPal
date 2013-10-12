@@ -52,45 +52,92 @@ $(document).ready(function() {
                         */
 
         var UserObject = Parse.Object.extend("TestObject");
-
+        /*
         var note = new UserObject();
-        note.save({foo:"10122013"}, {
-            success:function(object) {
-                alert("saved object");
-            },
-            error:function(object,error) {
-                alert("Sorry, I couldn't save it.");
-            }
-        });
+        note.save({foo:"10132013"}).then(function(result){
+            var query = new Parse.Query(UserObject);
+            alert("saved");
+            return
+            query.find({
+                success:function(results) {
+                    alert("success");
+                    for(var i=0; i<results.length; i++) {
+
+                        var contact = results[i];
+                        alert(results[i].get("foo"));
+                        //parseContacts.push(contact);
 
 
-        var query = new Parse.Query(UserObject);
-        query.find({
-            success:function(results) {
-                alert("success");
-                for(var i=0; i<results.length; i++) {
+                    }
+                },
+                error:function(results,error) {
 
-                    var contact = results[i];
-                    alert(results[i].get("foo"));
-                    //parseContacts.push(contact);
-
-
+                    alert("results: "+results.length);
+                    alert(error.get("code")+" " + error.get("message"));
                 }
-            },
-            error:function(results,error) {
+            });
+            alert("done");
 
-                alert("results: "+results.length);
-                alert(error.get("code")+" " + error.get("message"));
-            }
-        });
-        alert("done");
+
+        });      */
+        var query = new Parse.Query(UserObject);
+        query.find().then(function(results) {
+            // Create a trivial resolved promise as a base case.
+            var promise = Parse.Promise.as();
+            _.each(results, function(result) {
+                alert("in result");
+                alert(result.get("foo"));
+                promise = promise.then(function() {
+                    // Return a promise that will be resolved when the delete is finished.
+                    return result.destroy();
+                });
+            });
+            return promise;
+
+        }).then(function() {
+                // Every comment was deleted.
+            })
+
+
+
 
     }
+
+    function fetchByName(name){
+        var UserObject = Parse.Object.extend("TestObject");
+        var promise = new Parse.Promise();
+
+        var query = new Parse.Query(UserObject);
+        query.equalTo("foo", name);
+        query.first({
+            success: function(role) {
+                promise.resolve(role);
+            },
+            error: function(error) {
+                promise.reject(error);
+            }
+        });
+        return promise;
+    }
+
     $("#list-device-contacts").click(function(event) {
         //findContacts();
         //liquid.helper.oauth.authorize(authorizeWindowChange);
-        getParseContacts();
-        alert("done 1");
+       // getParseContacts();
+
+        fetchByName("Darren").then(function(role){
+            alert(role.get("foo"));
+            role.set("foo", "Did It");
+            return role.save();
+        }, function(error) {
+            return Parse.Promise.error(error);
+        }).then(function(role) {
+                return response.success(role);
+            }, function(error) {
+                return response.error(error);
+            });
+
+
     });
 
     $("#synch-device").click(function(event) {
