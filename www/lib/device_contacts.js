@@ -20,6 +20,7 @@ $(document).ready(function() {
                 parseContacts.push(contact);
                 //$('#contact-list').append('<li>'+contact.get("phoneNumber")+' '+contact.get("Email")+'</li>');
             }
+            alert("i "+i);
             alert("length " + parseContacts.length);
         }, function(error) {
                 alert("Error when getting users!");
@@ -49,7 +50,26 @@ $(document).ready(function() {
     $("#list-device-contacts").click(function(event) {
         //findContacts();
         //liquid.helper.oauth.authorize(authorizeWindowChange);
-        getParseContacts();
+        //getParseContacts();
+        Parse.initialize(PARSE_APP, PARSE_JS);
+        //var UserObject = Parse.Object.extend("UserObject");
+        var query = new Parse.Query("UserObject");
+        query.find({
+            success: function(results) {
+                alert("in here");
+                alert("length 1 " + parseContacts.length);
+                for(var i=0; i<results.length; i++) {
+                    alert(i);
+                    var contact = results[i];
+                    parseContacts.push(contact);
+                    //$('#contact-list').append('<li>'+contact.get("phoneNumber")+' '+contact.get("Email")+'</li>');
+                }
+            },
+
+            error: function(error) {
+                alert("Error when getting users!");
+            }
+        });
 
     });
 
