@@ -70,6 +70,7 @@ $(document).ready(function() {
                 alert("Error when getting users!");
             }
         });
+        alert("done probably before query is complete");
 
     });
 
