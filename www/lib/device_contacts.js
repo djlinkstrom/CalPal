@@ -106,26 +106,11 @@ $(document).ready(function() {
     function fetchByName(name){
         var UserObject = Parse.Object.extend("TestObject");
         var promise = new Parse.Promise();
-
+        alert("in fetchbyname with "+name);
         var query = new Parse.Query(UserObject);
         query.equalTo("foo", name);
-        query.first({
-            success: function(role) {
-                promise.resolve(role);
-            },
-            error: function(error) {
-                promise.reject(error);
-            }
-        });
-        return promise;
-    }
+        query.first().then(function (role){
 
-    $("#list-device-contacts").click(function(event) {
-        //findContacts();
-        //liquid.helper.oauth.authorize(authorizeWindowChange);
-       // getParseContacts();
-
-        fetchByName("Darren").then(function(role){
             alert(role.get("foo"));
             role.set("foo", "Did It");
             return role.save();
@@ -137,6 +122,15 @@ $(document).ready(function() {
                 return response.error(error);
             });
 
+
+    }
+
+    $("#list-device-contacts").click(function(event) {
+        //findContacts();
+        //liquid.helper.oauth.authorize(authorizeWindowChange);
+       // getParseContacts();
+
+        fetchByName("Darren");
 
     });
 
