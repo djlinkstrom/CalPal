@@ -51,16 +51,28 @@ $(document).ready(function() {
             });
                         */
 
-        var UserObject = Parse.Object.extend("UserObject");
+        var UserObject = Parse.Object.extend("TestObject");
+
+        var note = new UserObject();
+        note.save({foo:"10122013"}, {
+            success:function(object) {
+                alert("saved object");
+            },
+            error:function(object,error) {
+                alert("Sorry, I couldn't save it.");
+            }
+        });
+
+
         var query = new Parse.Query(UserObject);
         query.find({
-
             success:function(results) {
                 alert("success");
                 for(var i=0; i<results.length; i++) {
 
                     var contact = results[i];
-                    parseContacts.push(contact);
+                    alert(results[i].get("foo"));
+                    //parseContacts.push(contact);
 
 
                 }
@@ -78,12 +90,7 @@ $(document).ready(function() {
         //findContacts();
         //liquid.helper.oauth.authorize(authorizeWindowChange);
         getParseContacts();
-
-
-
-
-
-
+        alert("done 1");
     });
 
     $("#synch-device").click(function(event) {
