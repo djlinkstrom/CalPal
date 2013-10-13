@@ -108,12 +108,15 @@ $(document).ready(function() {
         var promise = new Parse.Promise();
         alert("in fetchbyname with "+name);
         var query = new Parse.Query(UserObject);
-        query.equalTo("foo", name);
-        query.first().then(function (role){
-
-            alert(role.get("foo"));
-            role.set("foo", "Did It");
-            return role.save();
+       // query.equalTo("foo", name);
+       // alert("equal to went fine");
+        query.find().then(function (results){
+             for(var i=0; i<results.length; i++){
+                 alert(results[i].get("foo"));
+             }
+            //alert(role.get("foo"));
+            results[1].set("foo", "Did It");
+            return results[1].save();
         }, function(error) {
             return Parse.Promise.error(error);
         }).then(function(role) {
