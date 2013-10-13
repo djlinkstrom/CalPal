@@ -108,7 +108,7 @@ $(document).ready(function() {
         var promise = new Parse.Promise();
         alert("in fetchbyname with "+name);
         var query = new Parse.Query(UserObject);
-        query.equalTo("foo", name);
+        //query.equalTo("foo", name);
         query.first().then(function (role){
 
             alert(role.get("foo"));
