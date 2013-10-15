@@ -104,29 +104,34 @@ $(document).ready(function() {
     }
 
     function fetchByName(name){
-        var UserObject = Parse.Object.extend("TestObject");
+        var TestObject = Parse.Object.extend("TestObject");
+        var query = new Parse.Query(TestObject);
+
+
+
+
         var promise = new Parse.Promise();
         alert("in fetchbyname with "+name);
-        var query = new Parse.Query(UserObject);
-       // query.equalTo("foo", name);
-       // alert("equal to went fine");
         query.find().then(function (results){
-             for(var i=0; i<results.length; i++){
-                 alert(results[i].get("foo"));
-             }
-            //alert(role.get("foo"));
-            results[1].set("foo", "Did It");
-            return results[1].save();
+            alert("in then");
+            for(var i=0; i<results.length; i++){
+                alert(i + " " + results[i].get("foo"));
+            }
+            results[i-1].set("foo", "Updated ");
+            return results[i-1].save();
         }, function(error) {
+            alert("in error");
             return Parse.Promise.error(error);
         }).then(function(role) {
+                alert("in 3");
                 return response.success(role);
             }, function(error) {
+               alert("in 4");
                 return response.error(error);
             });
-
-
+        alert("through it");
     }
+
 
     $("#list-device-contacts").click(function(event) {
         //findContacts();
