@@ -112,24 +112,31 @@ $(document).ready(function() {
 
         var promise = new Parse.Promise();
         alert("in fetchbyname with "+name);
-        query.find().then(function (results){
-            alert("in then");
-            for(var i=0; i<results.length; i++){
-                alert(i + " " + results[i].get("foo"));
-            }
-            results[i-1].set("foo", "Updated ");
-            return results[i-1].save();
-        }, function(error) {
-            alert("in error");
-            return Parse.Promise.error(error);
-        }).then(function(role) {
-                alert("in 3");
-                return response.success(role);
+
+        try {
+            query.find().then(function (results){
+                alert("in then");
+
+                for(var i=0; i<results.length; i++){
+                    alert(i + " " + results[i].get("foo"));
+                }
+                results[i-1].set("foo", "Updated ");
+                return results[i-1].save();
             }, function(error) {
-               alert("in 4");
-                return response.error(error);
-            });
-        alert("through it");
+                alert("in error");
+                return Parse.Promise.error(error);
+            }).then(function(role) {
+                    alert("in 3");
+                    return response.success(role);
+                }, function(error) {
+                    alert("in 4");
+                    return response.error(error);
+                });
+            alert("through it");
+        } catch (ParseException) {
+            alert("error");
+        }
+
     }
 
 
