@@ -184,6 +184,16 @@
         alert("here");
     })
 
+    $('#landing-find-friends').onclick(function(){
+        $.mobile.changePage("#friends-landing", {
+            transition : "none",
+            reverse: false,
+            changeHash: false
+        });
+    })
+
+
+
     // Initialize the Facebook SDK
     $(document).ready(function() {
         FB.init({
