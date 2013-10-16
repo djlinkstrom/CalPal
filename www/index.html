@@ -62,7 +62,7 @@
             Sign In With Google!</a>
         </div>
         <div class="skip-to-find-friends">
-            <a  id="landing-find-friends" data-role="button" data-transition="none">
+            <a  href="#friends-landing" id="landing-find-friends" data-role="button" data-transition="none">
                 Skip to Find Friends
             </a>
         </div>
@@ -184,13 +184,7 @@
         alert("here");
     })
 
-    $('#landing-find-friends').onclick(function(){
-        $.mobile.changePage("#friends-landing", {
-            transition : "none",
-            reverse: false,
-            changeHash: false
-        });
-    })
+
 
 
 
