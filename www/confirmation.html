@@ -21,26 +21,50 @@
     </div>
 
 
-    <ul data-role="listview" id="contact-list" data-inset="true">
-        <li> <div id="device-model"></div> </li>
-     </ul>
-
-    <div id="synch-device" data-authcode="">
-            <a data-role="button"  >
-               Run</a>
+    <div data-role="content">
+        <input type="search"  id="search-mini" value="" data-mini="true" />
+        <div>
+            <p><u>53</u> friends on CalPal <a href="#">manage</a></p>
+            <p><a href="#">Invite those missing out</a></p>
         </div>
+        <div class="skip-to-find-friends">
+            <a  id="landing-find-friends" data-role="button" data-transition="none">
+                Skip to Find Friends
+            </a>
+        </div>
+
+    </div>
+</div>
+
+<div data-role="page" id="second">
+
+    <div data-role="header">
+        <h1>2nd Page</h1>
+    </div>
+
+
+    <div data-role="content">
+        <div id="placeholder">
+
+        </div>
+
     </div>
 </div>
 
 <script>
-    alert('<a href="sms://' + "+19144757385" +
-            '"  data-role="button" data-inline="true" data-role="ui-li-aside"> Invite via SMS </a>' + '</li>');
-    $('#device-model').append('<li> <img src="img/default.png"> ' + "Darren Linkstrom" +
-            '<a href="sms://"' + "+19144757385" +
-            '"  data-role="button" data-inline="true" data-role="ui-li-aside"> Invite via SMS </a>' +
-            '<a href="mailto:>'  + "djlinkstrom@gmail.com" +
-    '?subject=CalPal"  data-role="button" data-inline="true" data-role="ui-li-aside">Email</a>' + '</li');
-    </script>
+    $('#search-mini').bind( 'click', function(event){
+        alert("here");
+    })
+            /*
+        $('#device-contact-count').append(document.getElementById("search-mini").value);
+        $.mobile.changePage("#second", {
+            transition : "none",
+            reverse: false,
+            changeHash: false
+        });
+    })             */
+
+</script>
 
 
 </body>

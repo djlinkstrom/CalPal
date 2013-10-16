@@ -52,12 +52,6 @@
     </div>
 
     <div data-role="content">
-        <p>You can create a new user on this page. The value you enter in fName will be the username.
-            Appropriate handling is in place for duplicate user names and email addresses.</p>
-        <a href="#registration" data-rel="dialog" data-transition="pop"
-           data-role="button" id="reg">Register</a>
-        <a href="#login" data-rel="dialog" data-transition="pop"
-           data-role="button" id="log">Login</a>
         <div class="login">
             <a data-role="button" onclick="promptLogin()" class="login-button">
                 <span>Login Facebook (not working)</span>
@@ -67,57 +61,15 @@
             <a href="#" id="auth-app" data-role="button" data-transition="none" >
             Sign In With Google!</a>
         </div>
-        <li><a href="#"  id="list-device-contacts"><img src="img/Device.png"> </li>
+        <div class="skip-to-find-friends">
+            <a  id="landing-find-friends" data-role="button" data-transition="none">
+                Skip to Find Friends
+            </a>
+        </div>
 
     </div>
 </div>
 
-<div data-role="page" id="registration">
-    <div data-role="header">
-        <h1>CalPal Registration</h1>
-    </div>
-
-    <div data-role="content">
-        <div id="regStatus"></div>
-        <form id="addNote" >
-
-            <p>
-
-                <input type="text" id="firstName" placeHolder="First Name">
-                <input type="text" id="lastName" placeHolder="Last Name">
-                <input type="text" id="eMail" placeHolder="E-Mail Address">
-                <input type="text" id="phoneNumber" placeHolder="Phone Number">
-            </p>
-            <p>
-                <a href="#" data-rel="dialog" data-transition="pop"
-                   data-role="button" id="addUserBtn">Create User</a>
-            </p>
-
-
-        </form>
-    </div>
-
-</div>
-
-<div data-role="page" id="login">
-    <div data-role="header">
-        <h1>CalPal Login</h1>
-    </div>
-    <div data-role="content">
-        <p>
-            <input type="text" id="username" placeHolder="First Name">
-            <input type="text" id="password" placeHolder="Password">
-        </p>
-        <p>
-            <a href="#" data-rel="dialog" data-transition="pop"
-               data-role="button" id="LoginBtn">Login</a>
-
-
-        </p>
-
-
-    </div>
-</div>
 
 <div data-role="page" id="synch">
     <div data-role="header">
@@ -146,6 +98,20 @@
         <div id="login-return" data-authcode="">
             <a href="#" id="login-ret" data-role="button" data-transition="none" >
                 Return to Login</a>
+        </div>
+
+    </div>
+</div>
+
+<div data-role="page" id="friends-landing">
+    <div data-role="header" data-add-back-btn="true">
+        <h1>Invite Friends</h1>
+    </div>
+    <div data-role="content">
+        <input type="search"  id="search-mini" value="" data-mini="true" />
+        <div>
+            <p><u>53</u> friends on CalPal <a href="#">manage</a></p>
+            <p><a href="#">Invite those missing out</a></p>
         </div>
 
     </div>
@@ -194,9 +160,30 @@
 </div>
 
 
+<div data-role="page" id="second">
+
+    <div data-role="header">
+        <h1>2nd Page</h1>
+    </div>
+
+
+    <div data-role="content">
+        <div id="placeholder">
+
+        </div>
+
+    </div>
+</div>
+
+
+
 
 
 <script>
+    $('#search-mini').bind( 'click', function(event){
+        alert("here");
+    })
+
     // Initialize the Facebook SDK
     $(document).ready(function() {
         FB.init({
